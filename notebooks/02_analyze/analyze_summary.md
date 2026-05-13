@@ -32,80 +32,100 @@
 
 ### Feature Engineering — `04_feature_engineering.ipynb`
 - [x] **Feature temporali**: `year`, `month`, `day_of_week` estratte da `DATE OCC` — `04_feature_engineering.ipynb`
-- [x] **Fascia oraria**: `time_slot` con 6 fasce (Night, Early Morning, Morning, Afternoon, Evening, Late Night) tramite `pd.cut()` su `hour_occ` — `04_feature_engineering.ipynb`
-- [x] **Fasce di età**: `age_group` con 5 categorie (Child 0-12, Adolescent 13-17, Young Adult 18-34, Adult 35-64, Senior 65+) tramite `pd.cut()` su `Vict Age` — `04_feature_engineering.ipynb`
-- [x] **Macro-categoria crimine**: `crime_category` (Person / Property / Other) tramite `np.select()` e classificazione manuale dei 143 tipi di crimine in due liste — `04_feature_engineering.ipynb`
+- [x] **Fascia oraria**: `hour_bins` con 6 fasce tramite `pd.cut()` su `hour_occ` — `04_feature_engineering.ipynb`
+- [x] **Fasce di età**: `age_group` con 5 categorie tramite `pd.cut()` su `Vict Age` — `04_feature_engineering.ipynb`
+- [x] **Macro-categoria crimine**: `crime_category` (Person / Property / Other) tramite `np.select()` — `04_feature_engineering.ipynb`
 - [x] **Report delay**: `report_delay` (differenza in giorni tra `Date Rptd` e `DATE OCC`) — `04_feature_engineering.ipynb`
-- [x] **Flag reati domestici**: `is_domestic` (booleana, True/False) basata su parole chiave in `Crm Cd Desc` (INTIMATE PARTNER, CHILD ABUSE, ecc.) — `04_feature_engineering.ipynb`
+- [x] **Flag reati domestici**: `is_domestic` (booleana) basata su parole chiave in `Crm Cd Desc` — `04_feature_engineering.ipynb`
 - [x] **Verifica finale e salvataggio `crimes_features.parquet`** — `04_feature_engineering.ipynb`
 
-### EDA
-- [ ] **EDA Blocco 1-5** — da creare
-- [ ] **EDA fase avanzata Blocco 6-7** — da creare
+### EDA Blocco 1 — `05_eda_block1.ipynb`
+- [x] **Q1.1 — Top 5 crimini più frequenti e trend YoY** (line chart) — `05_eda_block1.ipynb`
+- [x] **Q1.2 — Crimini Person vs Property trend YoY** (line chart) — `05_eda_block1.ipynb`
+- [x] **Q1.3 — Categorie con maggior crescita/decrescita YoY** (bar chart + heatmap top 15) — `05_eda_block1.ipynb`
+- [x] **Q1.4 Parte 1 — Pattern stagionali macro-categorie** (line chart media mensile) — `05_eda_block1.ipynb`
+- [x] **Q1.4 Parte 2 — Approfondimento stagionale top 5 Property** (line chart) — `05_eda_block1.ipynb`
+- [x] **Q1.5 — Distribuzione per fascia oraria e giorno della settimana** (2 heatmap affiancate) — `05_eda_block1.ipynb`
+
+### EDA Blocchi 2-5
+- [ ] **Q2.1-2.3 — Profilo demografico vittime** — `06_eda_block2.ipynb` (da creare)
+- [ ] **Q3.1-3.4 — Abusi domestici e sicurezza minori** — da creare
+- [ ] **Q4.1-4.2 — Reati con arma da fuoco** — da creare
+- [ ] **Q5.1-5.2 — Efficacia della risposta** — da creare
+
+### EDA fase avanzata Blocchi 6-7
+- [ ] **Analisi geospaziale avanzata e modelli predittivi** — da creare
 
 ## Decisioni chiave
 
 ### Cleaning
-1. **Colonne eliminate**: `Crm Cd 2/3/4` (>93% nulli) e `Cross Street` (84% nulli, ridondante). Da 28 a 24 colonne.
-2. **`TIME OCC` sostituito con `hour_occ`**: intero HHMM convertito in ora intera 0-23. Colonna originale eliminata.
-3. **Coordinate sentinella (0, 0) → NaN**: i 3.148 record mantengono l'informazione non-geografica.
-4. **Duplicati: drop_duplicates() semplice**: tutti i 57.809 duplicati erano esatti, distribuiti su 122 tipi di crimine. Errore generalizzato di caricamento.
-5. **Vict Sex: solo M, F, X**: valori rari H (185), N (17), - (2) ricodificati come X.
-6. **Vict Age ≤ 0 → NaN**: 631.621 sentinelle (valore 0) + 778 errori (valori negativi).
-7. **Mocodes lasciati con NaN**: 12.18% di nulli è mancanza legittima.
+1. **Colonne eliminate**: `Crm Cd 2/3/4` e `Cross Street`. Da 28 a 24 colonne.
+2. **`TIME OCC` → `hour_occ`**: intero HHMM convertito in ora intera 0-23.
+3. **Coordinate sentinella (0, 0) → NaN**: 3.148 record corretti.
+4. **Duplicati esatti rimossi**: 57.809 righe, errore generalizzato di caricamento.
+5. **Vict Sex: solo M, F, X**: valori rari ricodificati.
+6. **Vict Age ≤ 0 → NaN**: 632.399 valori sentinella/errore.
+7. **Mocodes lasciati con NaN**: mancanza legittima.
 
 ### Feature Engineering
-8. **Fasce orarie da 4 ore**: scelta di 6 fasce che riflettono i ritmi della giornata. L'artefatto mezzanotte (130k record con hour_occ = 0) è incluso nella fascia "Night" e verrà gestito in EDA.
-9. **Fasce di età allineate al Blocco 3**: le fasce Child (0-12) e Adolescent (13-17) sono state scelte specificamente per supportare l'analisi sugli abusi domestici e la sicurezza dei minori.
-10. **Classificazione Person/Property/Other manuale**: i 143 tipi di crimine sono stati classificati manualmente in due liste. Casi ambigui (TILL TAP, PICKPOCKET, ARSON, CRUELTY TO ANIMALS, ecc.) classificati secondo il criterio legale USA. In uno scenario reale, la classificazione andrebbe validata con il domain expert (es. responsabile LAPD). I crimini non classificabili (47.648 record, 1.5%) sono in "Other" (es. DISTURBING THE PEACE, FALSE POLICE REPORT, CONTEMPT OF COURT).
-11. **Flag `is_domestic` basato su parole chiave**: 225.938 reati domestici identificati (7.3% del dataset). Parole chiave: INTIMATE PARTNER, CHILD ABUSE, CHILD NEGLECT, CHILD ABANDONMENT, CHILD STEALING, CHILD ANNOYING, CRM AGNST CHLD, INCEST.
+8. **Fasce orarie da 4 ore**: 6 fasce. Artefatto mezzanotte incluso in "Night", gestito in EDA.
+9. **Fasce età allineate al Blocco 3**: Child (0-12) e Adolescent (13-17) per analisi abusi domestici.
+10. **Classificazione Person/Property/Other manuale**: 143 crimini classificati. Da validare con domain expert in scenario reale.
+11. **Flag `is_domestic`**: 225.938 reati domestici (7.3%).
+
+### EDA Blocco 1
+12. **Filtro soglia 500 occorrenze (Q1.3)**: esclude crimini rari per evitare variazioni percentuali distorte.
+13. **Media mensile su 15 anni (Q1.4)**: conteggio per anno+mese → media per mese. Evita bias da anni con più dati.
+14. **Heatmap Q1.5 con cmap RdYlGn_r**: rosso = più crimini, verde = meno crimini.
 
 ## Risultati principali
 
 ### Post-cleaning
 - **Dataset pulito**: 3.079.424 righe × 24 colonne
-- **Righe rimosse**: 58.607 totali (57.809 duplicati + 775 Premis Desc nulli + 23 Status/Crm Cd 1 nulli)
-- **Range DATE OCC**: 1 gennaio 2010 → 30 dicembre 2024. Il 2024 NON è troncato (calo reale di crimini registrati)
-- **Range Date Rptd**: fino al 5 giugno 2025 (dataset congelato a quel punto)
+- **Range DATE OCC**: 1 gennaio 2010 → 30 dicembre 2024
 - **15 anni**, **21 aree LAPD**, **143 tipi di crimine**
 
 ### Post-feature engineering
-- **Dataset arricchito**: 3.079.424 righe × 32 colonne (8 feature aggiunte)
-- **Distribuzione crime_category**: Property 63% (1.938.752), Person 35.5% (1.093.024), Other 1.5% (47.648)
-- **Distribuzione age_group**: Adult 37.6%, Young Adult 32.2%, NaN 20.5%, Senior 5.5%, Adolescent 2.7%, Child 1.4%
-- **Distribuzione time_slot**: Evening (690k) > Afternoon (678k) > Late Night (631k) > Morning (499k) > Night (351k) > Early Morning (229k)
-- **Reati domestici**: 225.938 (7.3% del totale)
-- **Report delay**: mediana 1 giorno, media 21 giorni, max 5.407 giorni (~14.8 anni). Distribuzione fortemente asimmetrica (la maggior parte dei crimini si denuncia entro 2 giorni, con coda lunga di denunce tardive)
+- **Dataset arricchito**: 3.079.424 righe × 32 colonne
+- **Distribuzione crime_category**: Property 63%, Person 35.5%, Other 1.5%
+- **Reati domestici**: 225.938 (7.3%)
+- **Report delay**: mediana 1 giorno, media 21 giorni, max 5.407 giorni (~14.8 anni)
+
+### EDA Blocco 1 — Scoperte principali
+- **Vehicle Theft**: unico crimine in crescita dal 2020. Fenomeno nazionale documentato (da citare: FBI UCR, NICB).
+- **Anomalie 2015-2016**: calo generalizzato 2015, rimbalzo brusco 2016. Ipotesi: transizione sistema classificazione LAPD. Da verificare con fonti esterne.
+- **Shoplifting (Petty) strutturale**: +87% nel 2023, tendenza non in rientro. Correlata alla Prop 47 California.
+- **Identity Theft temporaneo**: +95% nel 2022, -39% nel 2023. Fenomeno post-pandemia.
+- **Stagionalità Property**: picchi a marzo (effetto aggregato post-febbraio) e ottobre (guidato da Vehicle Theft).
+- **Identity Theft stagionalità inversa**: alta in inverno, bassa in estate. Ipotesi: attività online (acquisti natalizi, dichiarazioni fiscali).
+- **Divergenza dicembre**: tutti i Property aumentano tranne Vehicle Theft.
+- **Picco notturno weekend (Person)**: domenica notte 34.062, sabato notte 28.763. Pattern movida notturna.
+- **Venerdì picco Property**: Afternoon 70.800, Evening 73.995 — valori massimi assoluti.
+- **Early Morning fascia più sicura**: minimi per entrambe le categorie in tutti i giorni.
 
 ## Problemi e soluzioni
-
-- **Scoperta 2024 non troncato**: l'ispezione iniziale ipotizzava troncamento a metà anno. La conversione delle date ha rivelato che DATE OCC arriva al 30 dicembre 2024: il calo è reale.
-- **Valori anomali in Vict Sex**: oltre a M, F, X emersi H, N, -. Ricodificati come X (204 record).
-- **Nulli in Status e Crm Cd 1 scoperti solo nella verifica finale**: non emersi nell'ispezione iniziale, rivelati dopo le trasformazioni. Lezione: eseguire sempre verifica finale post-cleaning.
-- **Notebook non salvato (incidente locale)**: una sessione di lavoro persa per mancato salvataggio. Recuperata tramite git pull dalla versione committata. Lezione: salvare frequentemente e committare ogni step significativo.
+- **2024 non troncato**: il calo è reale, non un artefatto del dataset.
+- **SettingWithCopyWarning**: risolto con `.copy()` sui DataFrame filtrati.
+- **FutureWarning groupby**: risolto con `observed=True` sui groupby su colonne `category`.
+- **Notebook non salvato**: recuperato via git pull. Lezione: committare frequentemente.
 
 ## Output prodotti
-<!-- Formato: - `path/al/file.ext` ← prodotto da `nome_notebook.ipynb` -->
-- `notebooks/02_analyze/02_cleaning.ipynb` — notebook completo di pulizia dati
-- `notebooks/02_analyze/04_feature_engineering.ipynb` — notebook di creazione feature derivate
-- `data/processed/crimes_clean.parquet` — dataset pulito, 3.079.424 righe × 24 colonne ← prodotto da `02_cleaning.ipynb`
-- `data/processed/crimes_features.parquet` — dataset arricchito, 3.079.424 righe × 32 colonne ← prodotto da `04_feature_engineering.ipynb`
+- `notebooks/02_analyze/02_cleaning.ipynb`
+- `notebooks/02_analyze/04_feature_engineering.ipynb`
+- `notebooks/02_analyze/05_eda_block1.ipynb`
+- `data/processed/crimes_clean.parquet` — 3.079.424 × 24 colonne
+- `data/processed/crimes_features.parquet` — 3.079.424 × 32 colonne
+- `outputs/05_eda_block1/01_top5_crimes_trend.png`
+- `outputs/05_eda_block1/02_person_vs_property_trend.png`
+- `outputs/05_eda_block1/03_variation_top5_bottom5_2023.png`
+- `outputs/05_eda_block1/04_heatmap_yoy_variation_top15.png`
+- `outputs/05_eda_block1/05_seasonal_patterns_macro.png`
+- `outputs/05_eda_block1/06_seasonal_patterns_property_top5.png`
+- `outputs/05_eda_block1/07_heatmap_time_distribution.png`
 
 ## Note per la fase successiva
 
-I prossimi step della fase Analyze sono:
-
-1. **EDA strutturata per blocchi tematici** seguendo le domande di ricerca definite in `03_research_questions.md`:
-   - Blocco 1: Panoramica e trend temporali
-   - Blocco 2: Profilo demografico vittime
-   - Blocco 3: Abusi domestici e sicurezza minori
-   - Blocco 4: Reati con arma da fuoco
-   - Blocco 5: Efficacia della risposta
-
-2. **Scaricare la lookup table dei Mocodes** (`MO_CODES.txt`) dal portale LAPD prima di affrontare il Blocco 3 (Q3.4)
-
-3. **Ogni grafico va esportato come PNG** con `plt.savefig('nome_descrittivo.png', dpi=150, bbox_inches='tight')` prima di `plt.show()`, come richiesto dal Piano di Sviluppo Professionale per la costruzione della presentazione PowerPoint
-
-4. **Gestire l'artefatto mezzanotte** nelle analisi temporali: confronto con e senza record a hour_occ = 0
-
-5. **Indagare il calo 2024** e le **anomalie 2015-2016** con ricerca esterna per documentarle nella relazione management
+1. **EDA Blocco 2** (`06_eda_block2.ipynb`): profilo demografico vittime (Q2.1-2.3)
+2. **Scaricare lookup table Mocodes** (`MO_CODES.txt`) prima del Blocco 3
+3. **Grafici Blocco 2** salvati in `outputs/06_eda_block2/` con numerazione sequenziale da 08_
+4. **Fonti esterne da raccogliere** per relazione finale: Vehicle Theft post-COVID (FBI UCR, NICB), anomalie 2015-2016, Prop 47 California
