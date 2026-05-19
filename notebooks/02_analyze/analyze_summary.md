@@ -21,7 +21,7 @@
 - [x] **Conversione date** (`DATE OCC`, `Date Rptd` → datetime64) — `02_cleaning.ipynb`
 - [x] **Conversione orari** (`TIME OCC` intero HHMM → `hour_occ` 0-23, colonna originale eliminata) — `02_cleaning.ipynb`
 - [x] **Gestione coordinate sentinella** (3.148 record con (0,0) → NaN) — `02_cleaning.ipynb`
-- [x] **Rimozione duplicati esatti** (57.809 righe rimosse, tutti duplicati identici su tutte le colonne, distribuiti su 122 tipi di crimine) — `02_cleaning.ipynb`
+- [x] **Rimozione duplicati esatti** (57.809 righe rimosse) — `02_cleaning.ipynb`
 - [x] **Ricodifica nulli Weapon** (`Weapon Desc` → "No Weapon", `Weapon Used Cd` → 0) — `02_cleaning.ipynb`
 - [x] **Ricodifica nulli Vict Sex/Descent** (NaN → "X") — `02_cleaning.ipynb`
 - [x] **Pulizia valori anomali Vict Sex** (H, N, - → "X", 204 record) — `02_cleaning.ipynb`
@@ -47,9 +47,16 @@
 - [x] **Q1.4 Parte 2 — Approfondimento stagionale top 5 Property** (line chart) — `05_eda_block1.ipynb`
 - [x] **Q1.5 — Distribuzione per fascia oraria e giorno della settimana** (2 heatmap affiancate) — `05_eda_block1.ipynb`
 
-### EDA Blocchi 2-5
-- [ ] **Q2.1-2.3 — Profilo demografico vittime** — `06_eda_block2.ipynb` (da creare)
-- [ ] **Q3.1-3.4 — Abusi domestici e sicurezza minori** — da creare
+### EDA Blocco 2 — `06_eda_block2.ipynb`
+- [x] **Q2.1 — Distribuzione vittime per sesso** (donut chart) — `06_eda_block2.ipynb`
+- [x] **Q2.1 — Distribuzione vittime per fascia di età** (donut chart) — `06_eda_block2.ipynb`
+- [x] **Q2.1 — Distribuzione vittime per etnia** (bar chart orizzontale con lookup table codici LAPD) — `06_eda_block2.ipynb`
+- [x] **Q2.2 — Profilo vittime per macro-categoria** (bar chart raggruppato Person vs Property per fascia età e sesso) — `06_eda_block2.ipynb`
+- [x] **Q2.3 — Top 10 crimini contro vittime Senior 65+** (bar chart orizzontale con hue crime_category) — `06_eda_block2.ipynb`
+- [x] **Q2.3 — Trend temporale top 5 crimini contro Senior** (line chart) — `06_eda_block2.ipynb`
+
+### EDA Blocchi 3-5
+- [ ] **Q3.1-3.4 — Abusi domestici e sicurezza minori** — `07_eda_block3.ipynb` (da creare)
 - [ ] **Q4.1-4.2 — Reati con arma da fuoco** — da creare
 - [ ] **Q5.1-5.2 — Efficacia della risposta** — da creare
 
@@ -78,6 +85,12 @@
 13. **Media mensile su 15 anni (Q1.4)**: conteggio per anno+mese → media per mese. Evita bias da anni con più dati.
 14. **Heatmap Q1.5 con cmap RdYlGn_r**: rosso = più crimini, verde = meno crimini.
 
+### EDA Blocco 2
+15. **Donut chart per distribuzioni a poche categorie**: usato per sesso (3 valori) e età (5 valori). Bar chart orizzontale per etnia (20 valori).
+16. **Soglia 10.000 per raggruppamento etnie**: etnie con meno di 10.000 occorrenze aggregate in "Other/Small Groups" per leggibilità.
+17. **Lookup table codici etnia LAPD**: mappatura dei codici lettera singola (H, B, W, ecc.) in etichette descrittive. Fonte: LAPD Crime Data Dictionary su data.lacity.org.
+18. **Top 5 per trend Senior**: limitato ai 5 crimini più frequenti (su 10 del bar chart) per mantenere leggibilità del line chart.
+
 ## Risultati principali
 
 ### Post-cleaning
@@ -92,16 +105,23 @@
 - **Report delay**: mediana 1 giorno, media 21 giorni, max 5.407 giorni (~14.8 anni)
 
 ### EDA Blocco 1 — Scoperte principali
-- **Vehicle Theft**: unico crimine in crescita dal 2020. Fenomeno nazionale documentato (da citare: FBI UCR, NICB).
-- **Anomalie 2015-2016**: calo generalizzato 2015, rimbalzo brusco 2016. Ipotesi: transizione sistema classificazione LAPD. Da verificare con fonti esterne.
-- **Shoplifting (Petty) strutturale**: +87% nel 2023, tendenza non in rientro. Correlata alla Prop 47 California.
-- **Identity Theft temporaneo**: +95% nel 2022, -39% nel 2023. Fenomeno post-pandemia.
-- **Stagionalità Property**: picchi a marzo (effetto aggregato post-febbraio) e ottobre (guidato da Vehicle Theft).
-- **Identity Theft stagionalità inversa**: alta in inverno, bassa in estate. Ipotesi: attività online (acquisti natalizi, dichiarazioni fiscali).
-- **Divergenza dicembre**: tutti i Property aumentano tranne Vehicle Theft.
-- **Picco notturno weekend (Person)**: domenica notte 34.062, sabato notte 28.763. Pattern movida notturna.
-- **Venerdì picco Property**: Afternoon 70.800, Evening 73.995 — valori massimi assoluti.
-- **Early Morning fascia più sicura**: minimi per entrambe le categorie in tutti i giorni.
+- **Vehicle Theft**: unico crimine in crescita dal 2020. Da citare: FBI UCR, NICB.
+- **Anomalie 2015-2016**: calo 2015, rimbalzo 2016. Ipotesi: transizione sistema classificazione LAPD.
+- **Shoplifting (Petty) strutturale**: +87% nel 2023. Correlata alla Prop 47 California.
+- **Identity Theft temporaneo**: +95% nel 2022, -39% nel 2023.
+- **Stagionalità Property**: picchi a marzo (effetto aggregato) e ottobre (Vehicle Theft).
+- **Picco notturno weekend (Person)**: domenica notte 34.062. Pattern movida notturna.
+- **Venerdì picco Property**: Afternoon 70.800, Evening 73.995.
+- **Early Morning fascia più sicura**: minimi per entrambe le categorie.
+
+### EDA Blocco 2 — Scoperte principali
+- **Distribuzione sesso**: M 44.2%, F 40.0%, X 15.9%. Gap contenuto, attenuato dalla presenza di crimini domestici dove le donne sono sovrarappresentate.
+- **Distribuzione età**: Adult 47.4%, Young Adult 40.5% dei casi con età nota. Child 1.8%, Adolescent 3.4%. Nota: sottodenuncia elevata per i minori.
+- **Distribuzione etnia**: Hispanic/Latin/Mexican prima categoria (32.7%), White seconda (22.9%), Black terza (15.1%). Senza dati di popolazione non è possibile valutare sovra/sottorappresentazione.
+- **Pattern di genere invertito tra Property e Person**: nei crimini Property i maschi sono più colpiti nelle fasce adulte; nei crimini Person le femmine sono sovrarappresentate in tutte le fasce tranne Senior.
+- **Child e Adolescent femmine sovrarappresentate nei crimini Person**: bambine 23.336 vs 16.436 maschi; adolescenti 41.717 vs 26.823 maschi. Pattern coerente con abusi sessuali e violenza domestica. Approfondimento nel Blocco 3.
+- **Senior: 8 crimini su 10 sono Property**. Burglary (23.729) e Identity Theft (20.851) sono i primi due. Simple Assault unico crimine Person con trend strutturalmente crescente dal 2010 al 2023.
+- **Identity Theft Senior**: calo 2017-2020, esplosione 2020-2023 correlata al COVID e all'aumento forzato dell'uso di servizi digitali da parte degli anziani.
 
 ## Problemi e soluzioni
 - **2024 non troncato**: il calo è reale, non un artefatto del dataset.
@@ -113,6 +133,7 @@
 - `notebooks/02_analyze/02_cleaning.ipynb`
 - `notebooks/02_analyze/04_feature_engineering.ipynb`
 - `notebooks/02_analyze/05_eda_block1.ipynb`
+- `notebooks/02_analyze/06_eda_block2.ipynb`
 - `data/processed/crimes_clean.parquet` — 3.079.424 × 24 colonne
 - `data/processed/crimes_features.parquet` — 3.079.424 × 32 colonne
 - `outputs/05_eda_block1/01_top5_crimes_trend.png`
@@ -122,10 +143,17 @@
 - `outputs/05_eda_block1/05_seasonal_patterns_macro.png`
 - `outputs/05_eda_block1/06_seasonal_patterns_property_top5.png`
 - `outputs/05_eda_block1/07_heatmap_time_distribution.png`
+- `outputs/06_eda_block2/08_donut_victim_sex.png`
+- `outputs/06_eda_block2/09_donut_victim_age.png`
+- `outputs/06_eda_block2/10_barh_victim_descent.png`
+- `outputs/06_eda_block2/11_barplot_victim_age_sex_property.png`
+- `outputs/06_eda_block2/12_barplot_victim_age_sex_person.png`
+- `outputs/06_eda_block2/13_barh_top10_crimes_senior.png`
+- `outputs/06_eda_block2/14_lineplot_top5_crimes_senior_trend.png`
 
 ## Note per la fase successiva
 
-1. **EDA Blocco 2** (`06_eda_block2.ipynb`): profilo demografico vittime (Q2.1-2.3)
-2. **Scaricare lookup table Mocodes** (`MO_CODES.txt`) prima del Blocco 3
-3. **Grafici Blocco 2** salvati in `outputs/06_eda_block2/` con numerazione sequenziale da 08_
-4. **Fonti esterne da raccogliere** per relazione finale: Vehicle Theft post-COVID (FBI UCR, NICB), anomalie 2015-2016, Prop 47 California
+1. **EDA Blocco 3** (`07_eda_block3.ipynb`): abusi domestici e sicurezza minori (Q3.1-3.4)
+2. **Scaricare lookup table Mocodes** (`MO_CODES.txt`) prima di affrontare Q3.4
+3. **Grafici Blocco 3** salvati in `outputs/07_eda_block3/` con numerazione sequenziale da 15_
+4. **Fonti esterne da raccogliere** per relazione finale: Vehicle Theft post-COVID (FBI UCR, NICB), anomalie 2015-2016, Prop 47 California, Identity Theft anziani e COVID
