@@ -50,14 +50,23 @@
 ### EDA Blocco 2 — `06_eda_block2.ipynb`
 - [x] **Q2.1 — Distribuzione vittime per sesso** (donut chart) — `06_eda_block2.ipynb`
 - [x] **Q2.1 — Distribuzione vittime per fascia di età** (donut chart) — `06_eda_block2.ipynb`
-- [x] **Q2.1 — Distribuzione vittime per etnia** (bar chart orizzontale con lookup table codici LAPD) — `06_eda_block2.ipynb`
-- [x] **Q2.2 — Profilo vittime per macro-categoria** (bar chart raggruppato Person vs Property per fascia età e sesso) — `06_eda_block2.ipynb`
-- [x] **Q2.3 — Top 10 crimini contro vittime Senior 65+** (bar chart orizzontale con hue crime_category) — `06_eda_block2.ipynb`
+- [x] **Q2.1 — Distribuzione vittime per etnia** (bar chart orizzontale) — `06_eda_block2.ipynb`
+- [x] **Q2.2 — Profilo vittime per macro-categoria** (bar chart raggruppato Person vs Property) — `06_eda_block2.ipynb`
+- [x] **Q2.3 — Top 10 crimini contro vittime Senior 65+** (bar chart orizzontale) — `06_eda_block2.ipynb`
 - [x] **Q2.3 — Trend temporale top 5 crimini contro Senior** (line chart) — `06_eda_block2.ipynb`
 
-### EDA Blocchi 3-5
-- [ ] **Q3.1-3.4 — Abusi domestici e sicurezza minori** — `07_eda_block3.ipynb` (da creare)
-- [ ] **Q4.1-4.2 — Reati con arma da fuoco** — da creare
+### EDA Blocco 3 — `07_eda_block3.ipynb`
+- [x] **Q3.1 — Volume reati domestici** (donut chart domestici vs non-domestici) — `07_eda_block3.ipynb`
+- [x] **Q3.1 — Trend annuale reati domestici 2010-2024** (line chart) — `07_eda_block3.ipynb`
+- [x] **Q3.1 — Distribuzione reati domestici per area LAPD** (bar chart orizzontale) — `07_eda_block3.ipynb`
+- [x] **Q3.2 — Confronto profilo vittime per sesso** (2 donut affiancati domestici vs non-domestici) — `07_eda_block3.ipynb`
+- [x] **Q3.2 — Confronto profilo vittime per fascia di età** (2 donut affiancati) — `07_eda_block3.ipynb`
+- [x] **Q3.2 — Confronto profilo vittime per etnia** (2 bar chart affiancati) — `07_eda_block3.ipynb`
+- [x] **Q3.3 — Crimini domestici contro minori: Child vs Adolescent** (2 bar chart affiancati) — `07_eda_block3.ipynb`
+- [x] **Q3.4 — Pattern Mocodes nei reati domestici** (bar chart top 30 codici) — `07_eda_block3.ipynb`
+
+### EDA Blocchi 4-5
+- [ ] **Q4.1-4.2 — Reati con arma da fuoco** — `08_eda_block4.ipynb` (da creare)
 - [ ] **Q5.1-5.2 — Efficacia della risposta** — da creare
 
 ### EDA fase avanzata Blocchi 6-7
@@ -86,10 +95,16 @@
 14. **Heatmap Q1.5 con cmap RdYlGn_r**: rosso = più crimini, verde = meno crimini.
 
 ### EDA Blocco 2
-15. **Donut chart per distribuzioni a poche categorie**: usato per sesso (3 valori) e età (5 valori). Bar chart orizzontale per etnia (20 valori).
-16. **Soglia 10.000 per raggruppamento etnie**: etnie con meno di 10.000 occorrenze aggregate in "Other/Small Groups" per leggibilità.
-17. **Lookup table codici etnia LAPD**: mappatura dei codici lettera singola (H, B, W, ecc.) in etichette descrittive. Fonte: LAPD Crime Data Dictionary su data.lacity.org.
-18. **Top 5 per trend Senior**: limitato ai 5 crimini più frequenti (su 10 del bar chart) per mantenere leggibilità del line chart.
+15. **Donut chart per distribuzioni a poche categorie**: usato per sesso e età. Bar chart per etnia (20 valori).
+16. **Soglia 10.000 per raggruppamento etnie**: etnie minori aggregate in "Other/Small Groups".
+17. **Lookup table codici etnia LAPD**: fonte: LAPD Crime Data Dictionary su data.lacity.org.
+18. **Top 5 per trend Senior**: limitato ai 5 crimini più frequenti per leggibilità del line chart.
+
+### EDA Blocco 3
+19. **Mocodes esplosi con `.str.split().explode()`**: ogni codice trattato come unità indipendente. 1.004.602 codici totali da 224.201 record (1.737 record senza Mocodes esclusi).
+20. **Top 30 Mocodes per frequenza**: filtro applicato prima della visualizzazione per mantenere leggibilità.
+21. **Lookup table Mocodes**: fonte: LAPD MO Codes Numerical List, rev. 05/18.
+22. **Codice 2000 (Domestic Violence) escluso dall'interpretazione comportamentale**: è un flag amministrativo LAPD, non un indicatore di modus operandi specifico.
 
 ## Risultati principali
 
@@ -115,13 +130,21 @@
 - **Early Morning fascia più sicura**: minimi per entrambe le categorie.
 
 ### EDA Blocco 2 — Scoperte principali
-- **Distribuzione sesso**: M 44.2%, F 40.0%, X 15.9%. Gap contenuto, attenuato dalla presenza di crimini domestici dove le donne sono sovrarappresentate.
-- **Distribuzione età**: Adult 47.4%, Young Adult 40.5% dei casi con età nota. Child 1.8%, Adolescent 3.4%. Nota: sottodenuncia elevata per i minori.
-- **Distribuzione etnia**: Hispanic/Latin/Mexican prima categoria (32.7%), White seconda (22.9%), Black terza (15.1%). Senza dati di popolazione non è possibile valutare sovra/sottorappresentazione.
-- **Pattern di genere invertito tra Property e Person**: nei crimini Property i maschi sono più colpiti nelle fasce adulte; nei crimini Person le femmine sono sovrarappresentate in tutte le fasce tranne Senior.
-- **Child e Adolescent femmine sovrarappresentate nei crimini Person**: bambine 23.336 vs 16.436 maschi; adolescenti 41.717 vs 26.823 maschi. Pattern coerente con abusi sessuali e violenza domestica. Approfondimento nel Blocco 3.
-- **Senior: 8 crimini su 10 sono Property**. Burglary (23.729) e Identity Theft (20.851) sono i primi due. Simple Assault unico crimine Person con trend strutturalmente crescente dal 2010 al 2023.
-- **Identity Theft Senior**: calo 2017-2020, esplosione 2020-2023 correlata al COVID e all'aumento forzato dell'uso di servizi digitali da parte degli anziani.
+- **Distribuzione sesso**: M 44.2%, F 40.0%, X 15.9%.
+- **Pattern di genere invertito tra Property e Person**: nei crimini Person le femmine sono sovrarappresentate in tutte le fasce tranne Senior.
+- **Child e Adolescent femmine sovrarappresentate nei crimini Person**: bambine 23.336 vs 16.436 maschi; adolescenti 41.717 vs 26.823 maschi.
+- **Senior: 8 crimini su 10 sono Property**. Burglary e Identity Theft primi due. Simple Assault con trend crescente dal 2010 al 2023.
+
+### EDA Blocco 3 — Scoperte principali
+- **7.3% reati domestici**: dato da considerare limite inferiore per sottodenuncia e limitazioni classificatorie.
+- **Trend domestici contro-intuitivo post-2020**: calo invece dell'atteso aumento durante i lockdown COVID. Possibile aumento della sottodenuncia.
+- **Picco 2016-2018**: +38% in un anno. Da investigare con fonti esterne.
+- **Concentrazione geografica**: 77th Street (21.073), Southeast (17.431), Southwest (15.726) — tre aree contigue nel sud di LA dominano il volume.
+- **Profilo vittime domestiche**: donne 75.8% (vs 37.1% nei non-domestici). Inversione netta del pattern di genere.
+- **Minori sovrarappresentati nei domestici**: Child dal 1.8% generale al 10.4% nei domestici (6x). Adolescent dal 3.4% al 6.7%.
+- **Crimini contro minori**: Child — Crimes Against Child (7.869) e Physical Abuse Simple (7.403) quasi equivalenti. Adolescent — emerge Intimate Partner (1.973+300) assente nei bambini.
+- **Mocodes dominanti**: Hit with weapon (115.673), relazione sospettato-vittima (Boyfriend/Girlfriend 70.790, Victim knew Suspect 69.305, Spouse/Cohabitant 54.293). Choked/Strangled (22.738) — indicatore di alto rischio di escalation.
+- **Vittime minori nei Mocodes**: Victim 6-13 years (14.779), Victim 14-17 years (8.736), Victim newborn-5 years (7.030).
 
 ## Problemi e soluzioni
 - **2024 non troncato**: il calo è reale, non un artefatto del dataset.
@@ -134,26 +157,16 @@
 - `notebooks/02_analyze/04_feature_engineering.ipynb`
 - `notebooks/02_analyze/05_eda_block1.ipynb`
 - `notebooks/02_analyze/06_eda_block2.ipynb`
+- `notebooks/02_analyze/07_eda_block3.ipynb`
 - `data/processed/crimes_clean.parquet` — 3.079.424 × 24 colonne
 - `data/processed/crimes_features.parquet` — 3.079.424 × 32 colonne
-- `outputs/05_eda_block1/01_top5_crimes_trend.png`
-- `outputs/05_eda_block1/02_person_vs_property_trend.png`
-- `outputs/05_eda_block1/03_variation_top5_bottom5_2023.png`
-- `outputs/05_eda_block1/04_heatmap_yoy_variation_top15.png`
-- `outputs/05_eda_block1/05_seasonal_patterns_macro.png`
-- `outputs/05_eda_block1/06_seasonal_patterns_property_top5.png`
-- `outputs/05_eda_block1/07_heatmap_time_distribution.png`
-- `outputs/06_eda_block2/08_donut_victim_sex.png`
-- `outputs/06_eda_block2/09_donut_victim_age.png`
-- `outputs/06_eda_block2/10_barh_victim_descent.png`
-- `outputs/06_eda_block2/11_barplot_victim_age_sex_property.png`
-- `outputs/06_eda_block2/12_barplot_victim_age_sex_person.png`
-- `outputs/06_eda_block2/13_barh_top10_crimes_senior.png`
-- `outputs/06_eda_block2/14_lineplot_top5_crimes_senior_trend.png`
+- `outputs/05_eda_block1/` — 7 grafici (01-07)
+- `outputs/06_eda_block2/` — 7 grafici (08-14)
+- `outputs/07_eda_block3/` — 8 grafici (15-22)
 
 ## Note per la fase successiva
 
-1. **EDA Blocco 3** (`07_eda_block3.ipynb`): abusi domestici e sicurezza minori (Q3.1-3.4)
-2. **Scaricare lookup table Mocodes** (`MO_CODES.txt`) prima di affrontare Q3.4
-3. **Grafici Blocco 3** salvati in `outputs/07_eda_block3/` con numerazione sequenziale da 15_
-4. **Fonti esterne da raccogliere** per relazione finale: Vehicle Theft post-COVID (FBI UCR, NICB), anomalie 2015-2016, Prop 47 California, Identity Theft anziani e COVID
+1. **EDA Blocco 4** (`08_eda_block4.ipynb`): reati con arma da fuoco (Q4.1-4.2)
+2. **Grafici Blocco 4** salvati in `outputs/08_eda_block4/` con numerazione sequenziale da 23_
+3. **EDA Blocco 5** (`09_eda_block5.ipynb`): efficacia della risposta (Q5.1-5.2)
+4. **Fonti esterne da raccogliere** per relazione finale: Vehicle Theft post-COVID (FBI UCR, NICB), anomalie 2015-2016, Prop 47 California, Identity Theft anziani e COVID, picco reati domestici 2016-2018
