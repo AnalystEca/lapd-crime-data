@@ -59,15 +59,22 @@
 - [x] **Q3.1 — Volume reati domestici** (donut chart domestici vs non-domestici) — `07_eda_block3.ipynb`
 - [x] **Q3.1 — Trend annuale reati domestici 2010-2024** (line chart) — `07_eda_block3.ipynb`
 - [x] **Q3.1 — Distribuzione reati domestici per area LAPD** (bar chart orizzontale) — `07_eda_block3.ipynb`
-- [x] **Q3.2 — Confronto profilo vittime per sesso** (2 donut affiancati domestici vs non-domestici) — `07_eda_block3.ipynb`
+- [x] **Q3.2 — Confronto profilo vittime per sesso** (2 donut affiancati) — `07_eda_block3.ipynb`
 - [x] **Q3.2 — Confronto profilo vittime per fascia di età** (2 donut affiancati) — `07_eda_block3.ipynb`
 - [x] **Q3.2 — Confronto profilo vittime per etnia** (2 bar chart affiancati) — `07_eda_block3.ipynb`
 - [x] **Q3.3 — Crimini domestici contro minori: Child vs Adolescent** (2 bar chart affiancati) — `07_eda_block3.ipynb`
 - [x] **Q3.4 — Pattern Mocodes nei reati domestici** (bar chart top 30 codici) — `07_eda_block3.ipynb`
 
-### EDA Blocchi 4-5
-- [ ] **Q4.1-4.2 — Reati con arma da fuoco** — `08_eda_block4.ipynb` (da creare)
-- [ ] **Q5.1-5.2 — Efficacia della risposta** — da creare
+### EDA Blocco 4 — `08_eda_block4.ipynb`
+- [x] **Q4.1 — Distribuzione reati con arma da fuoco per area LAPD** (bar chart) — `08_eda_block4.ipynb`
+- [x] **Q4.1 — Volume reati per tipo di arma** (bar chart orizzontale) — `08_eda_block4.ipynb`
+- [x] **Q4.1 — Trend annuale per tipo di arma** (2 line chart affiancati: armi reali vs simulate) — `08_eda_block4.ipynb`
+- [x] **Q4.2 — Distribuzione vittime per sesso** (donut chart) — `08_eda_block4.ipynb`
+- [x] **Q4.2 — Distribuzione vittime per fascia di età** (donut chart) — `08_eda_block4.ipynb`
+- [x] **Q4.2 — Distribuzione vittime per etnia** (bar chart orizzontale) — `08_eda_block4.ipynb`
+
+### EDA Blocco 5
+- [ ] **Q5.1-Q5.2 — Efficacia della risposta** — `09_eda_block5.ipynb` (da creare)
 
 ### EDA fase avanzata Blocchi 6-7
 - [ ] **Analisi geospaziale avanzata e modelli predittivi** — da creare
@@ -101,10 +108,14 @@
 18. **Top 5 per trend Senior**: limitato ai 5 crimini più frequenti per leggibilità del line chart.
 
 ### EDA Blocco 3
-19. **Mocodes esplosi con `.str.split().explode()`**: ogni codice trattato come unità indipendente. 1.004.602 codici totali da 224.201 record (1.737 record senza Mocodes esclusi).
-20. **Top 30 Mocodes per frequenza**: filtro applicato prima della visualizzazione per mantenere leggibilità.
+19. **Mocodes esplosi con `.str.split().explode()`**: ogni codice trattato come unità indipendente. 1.004.602 codici totali da 224.201 record.
+20. **Top 30 Mocodes per frequenza**: filtro applicato prima della visualizzazione.
 21. **Lookup table Mocodes**: fonte: LAPD MO Codes Numerical List, rev. 05/18.
-22. **Codice 2000 (Domestic Violence) escluso dall'interpretazione comportamentale**: è un flag amministrativo LAPD, non un indicatore di modus operandi specifico.
+22. **Codice 2000 (Domestic Violence)**: flag amministrativo LAPD, non indicatore comportamentale.
+
+### EDA Blocco 4
+23. **Firearm list con 25 categorie**: include SIMULATED GUN, AIR PISTOL/BB GUN e TOY GUN — non armi da fuoco reali ma usate per far percepire minaccia armata. Documentato nelle osservazioni.
+24. **Trend split in armi reali vs simulate**: per il line chart limitato a 7 armi reali ad alto volume (Hand Gun, Semi-Auto Pistol, Unknown Firearm, Revolver, Other Firearm, Shotgun, Rifle) e 3 simulate per leggibilità.
 
 ## Risultati principali
 
@@ -137,14 +148,21 @@
 
 ### EDA Blocco 3 — Scoperte principali
 - **7.3% reati domestici**: dato da considerare limite inferiore per sottodenuncia e limitazioni classificatorie.
-- **Trend domestici contro-intuitivo post-2020**: calo invece dell'atteso aumento durante i lockdown COVID. Possibile aumento della sottodenuncia.
+- **Trend domestici contro-intuitivo post-2020**: calo invece dell'atteso aumento durante i lockdown COVID.
 - **Picco 2016-2018**: +38% in un anno. Da investigare con fonti esterne.
-- **Concentrazione geografica**: 77th Street (21.073), Southeast (17.431), Southwest (15.726) — tre aree contigue nel sud di LA dominano il volume.
-- **Profilo vittime domestiche**: donne 75.8% (vs 37.1% nei non-domestici). Inversione netta del pattern di genere.
-- **Minori sovrarappresentati nei domestici**: Child dal 1.8% generale al 10.4% nei domestici (6x). Adolescent dal 3.4% al 6.7%.
-- **Crimini contro minori**: Child — Crimes Against Child (7.869) e Physical Abuse Simple (7.403) quasi equivalenti. Adolescent — emerge Intimate Partner (1.973+300) assente nei bambini.
-- **Mocodes dominanti**: Hit with weapon (115.673), relazione sospettato-vittima (Boyfriend/Girlfriend 70.790, Victim knew Suspect 69.305, Spouse/Cohabitant 54.293). Choked/Strangled (22.738) — indicatore di alto rischio di escalation.
-- **Vittime minori nei Mocodes**: Victim 6-13 years (14.779), Victim 14-17 years (8.736), Victim newborn-5 years (7.030).
+- **Concentrazione geografica**: 77th Street (21.073), Southeast (17.431), Southwest (15.726).
+- **Profilo vittime domestiche**: donne 75.8% (vs 37.1% nei non-domestici).
+- **Minori sovrarappresentati nei domestici**: Child dal 1.8% al 10.4% (6x). Adolescent dal 3.4% al 6.7%.
+- **Mocodes dominanti**: Hit with weapon (115.673), Boyfriend/Girlfriend (70.790), Victim knew Suspect (69.305), Spouse/Cohabitant (54.293). Choked/Strangled (22.738) — indicatore alto rischio escalation.
+
+### EDA Blocco 4 — Scoperte principali
+- **Concentrazione geografica reati armati**: 77th Street (17.036), Southeast (12.121), Newton (9.879), Southwest (8.908) — stesse aree che dominano i reati domestici.
+- **Hand Gun dominante**: 53.523 casi (~46% del totale). Top 4 armi (Hand Gun, Semi-Auto Pistol, Unknown Firearm, Revolver) coprono ~81% dei reati.
+- **Armi simulate significative**: Simulated Gun (4.744) + Air Pistol (4.430) = ~10.000 casi. Minaccia percepita sufficiente per commettere reati senza arma reale.
+- **Revolver in declino costante** dal 2010; Semi-Auto Pistol in crescita strutturale dal 2015.
+- **Hand Gun accelerazione dal 2020**, picco nel 2022-2023 (~5.000 casi/anno).
+- **Profilo vittime armati**: Male 70.3% (vs 44.2% generale) — inversione netta rispetto ai reati domestici. Young Adult 52.3% (vs 40.5% generale). Adolescent 6.2% (vs 3.4% generale).
+- **Etnia**: Hispanic/Latin/Mexican prima (51.770), Black seconda (29.611, ~27% vs 15.1% generale), White terza (11.454, ~10.4% vs 22.9% generale).
 
 ## Problemi e soluzioni
 - **2024 non troncato**: il calo è reale, non un artefatto del dataset.
@@ -158,15 +176,16 @@
 - `notebooks/02_analyze/05_eda_block1.ipynb`
 - `notebooks/02_analyze/06_eda_block2.ipynb`
 - `notebooks/02_analyze/07_eda_block3.ipynb`
+- `notebooks/02_analyze/08_eda_block4.ipynb`
 - `data/processed/crimes_clean.parquet` — 3.079.424 × 24 colonne
 - `data/processed/crimes_features.parquet` — 3.079.424 × 32 colonne
 - `outputs/05_eda_block1/` — 7 grafici (01-07)
 - `outputs/06_eda_block2/` — 7 grafici (08-14)
 - `outputs/07_eda_block3/` — 8 grafici (15-22)
+- `outputs/08_eda_block4/` — 6 grafici (23-28)
 
 ## Note per la fase successiva
 
-1. **EDA Blocco 4** (`08_eda_block4.ipynb`): reati con arma da fuoco (Q4.1-4.2)
-2. **Grafici Blocco 4** salvati in `outputs/08_eda_block4/` con numerazione sequenziale da 23_
-3. **EDA Blocco 5** (`09_eda_block5.ipynb`): efficacia della risposta (Q5.1-5.2)
-4. **Fonti esterne da raccogliere** per relazione finale: Vehicle Theft post-COVID (FBI UCR, NICB), anomalie 2015-2016, Prop 47 California, Identity Theft anziani e COVID, picco reati domestici 2016-2018
+1. **EDA Blocco 5** (`09_eda_block5.ipynb`): efficacia della risposta (Q5.1-Q5.2)
+2. **Grafici Blocco 5** salvati in `outputs/09_eda_block5/` con numerazione sequenziale da 29_
+3. **Fonti esterne da raccogliere** per relazione finale: Vehicle Theft post-COVID (FBI UCR, NICB), anomalie 2015-2016, Prop 47 California, Identity Theft anziani e COVID, picco reati domestici 2016-2018
