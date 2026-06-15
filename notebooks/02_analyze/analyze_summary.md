@@ -1,8 +1,8 @@
 # Analyze — Summary
 
-**Stato**: In corso
+**Stato**: Completato (fase core)
 **Data inizio**: 20-04-2026
-**Data chiusura**: 
+**Data chiusura**: 15-06-2026
 
 ## Obiettivi della fase
 - Eseguire il cleaning completo del dataset combinato
@@ -73,11 +73,13 @@
 - [x] **Q4.2 — Distribuzione vittime per fascia di età** (donut chart) — `08_eda_block4.ipynb`
 - [x] **Q4.2 — Distribuzione vittime per etnia** (bar chart orizzontale) — `08_eda_block4.ipynb`
 
-### EDA Blocco 5
-- [ ] **Q5.1-Q5.2 — Efficacia della risposta** — `09_eda_block5.ipynb` (da creare)
+### EDA Blocco 5 — `09_eda_block5.ipynb`
+- [x] **Q5.1 — Clearance rate per area LAPD** (bar chart orizzontale) — `09_eda_block5.ipynb`
+- [x] **Q5.1 — Clearance rate per categoria di crimine** (bar chart) — `09_eda_block5.ipynb`
+- [x] **Q5.2 — Report delay: media e mediana per categoria** (bar chart raggruppato) — `09_eda_block5.ipynb`
 
 ### EDA fase avanzata Blocchi 6-7
-- [ ] **Analisi geospaziale avanzata e modelli predittivi** — da creare
+- [ ] **Analisi geospaziale avanzata e modelli predittivi** — da creare (opzionale)
 
 ## Decisioni chiave
 
@@ -115,7 +117,12 @@
 
 ### EDA Blocco 4
 23. **Firearm list con 25 categorie**: include SIMULATED GUN, AIR PISTOL/BB GUN e TOY GUN — non armi da fuoco reali ma usate per far percepire minaccia armata. Documentato nelle osservazioni.
-24. **Trend split in armi reali vs simulate**: per il line chart limitato a 7 armi reali ad alto volume (Hand Gun, Semi-Auto Pistol, Unknown Firearm, Revolver, Other Firearm, Shotgun, Rifle) e 3 simulate per leggibilità.
+24. **Trend split in armi reali vs simulate**: limitato a 7 armi reali ad alto volume e 3 simulate per leggibilità.
+
+### EDA Blocco 5
+25. **Clearance rate**: calcolato come (Adult Arrest + Juv Arrest + Adult Other + Juv Other) / totale. Invest Cont e UNK considerati "not cleared". Definizione coerente con FBI UCR.
+26. **Report delay filtrato a ≤ 365 giorni**: 3.040.664 record inclusi. Delay estremi (max 5.407 giorni) esclusi come casi eccezionali.
+27. **Visualizzazione report delay**: bar chart con media e mediana affiancate per categoria — preferito al box plot perché la distribuzione è troppo concentrata sui valori bassi (mediana 0-1 giorni).
 
 ## Risultati principali
 
@@ -156,19 +163,25 @@
 - **Mocodes dominanti**: Hit with weapon (115.673), Boyfriend/Girlfriend (70.790), Victim knew Suspect (69.305), Spouse/Cohabitant (54.293). Choked/Strangled (22.738) — indicatore alto rischio escalation.
 
 ### EDA Blocco 4 — Scoperte principali
-- **Concentrazione geografica reati armati**: 77th Street (17.036), Southeast (12.121), Newton (9.879), Southwest (8.908) — stesse aree che dominano i reati domestici.
-- **Hand Gun dominante**: 53.523 casi (~46% del totale). Top 4 armi (Hand Gun, Semi-Auto Pistol, Unknown Firearm, Revolver) coprono ~81% dei reati.
-- **Armi simulate significative**: Simulated Gun (4.744) + Air Pistol (4.430) = ~10.000 casi. Minaccia percepita sufficiente per commettere reati senza arma reale.
+- **Concentrazione geografica reati armati**: 77th Street (17.036), Southeast (12.121), Newton (9.879), Southwest (8.908).
+- **Hand Gun dominante**: 53.523 casi (~46% del totale). Top 4 armi coprono ~81% dei reati.
+- **Armi simulate significative**: ~10.000 casi totali.
 - **Revolver in declino costante** dal 2010; Semi-Auto Pistol in crescita strutturale dal 2015.
-- **Hand Gun accelerazione dal 2020**, picco nel 2022-2023 (~5.000 casi/anno).
-- **Profilo vittime armati**: Male 70.3% (vs 44.2% generale) — inversione netta rispetto ai reati domestici. Young Adult 52.3% (vs 40.5% generale). Adolescent 6.2% (vs 3.4% generale).
-- **Etnia**: Hispanic/Latin/Mexican prima (51.770), Black seconda (29.611, ~27% vs 15.1% generale), White terza (11.454, ~10.4% vs 22.9% generale).
+- **Profilo vittime armati**: Male 70.3%, Young Adult 52.3%, Adolescent 6.2% — tutti significativamente più alti rispetto al dataset generale.
+- **Etnia**: Hispanic/Latin/Mexican prima (51.770), Black seconda (29.611, ~27% vs 15.1% generale).
+
+### EDA Blocco 5 — Scoperte principali
+- **Clearance rate per area**: range 15.4% (Pacific) — 28.2% (West Valley). Range ristretto (~13 punti) suggerisce che il tasso è influenzato dalla tipologia di crimine presente nell'area più che dall'efficacia investigativa.
+- **Clearance rate per categoria**: Person 45.2%, Other 37.0%, Property 9.0%. Divario enorme — i crimini Property sono 5 volte meno risolti di quelli Person.
+- **Report delay Person**: media 1.0 giorno, mediana 0 giorni — denunciati lo stesso giorno.
+- **Report delay Property**: media 2.5 giorni, mediana 1 giorno — leggero ritardo coerente con la natura del reato (spesso scoperto il giorno dopo).
 
 ## Problemi e soluzioni
 - **2024 non troncato**: il calo è reale, non un artefatto del dataset.
 - **SettingWithCopyWarning**: risolto con `.copy()` sui DataFrame filtrati.
 - **FutureWarning groupby**: risolto con `observed=True` sui groupby su colonne `category`.
 - **Notebook non salvato**: recuperato via git pull. Lezione: committare frequentemente.
+- **Box plot illeggibile per report delay**: distribuzione troppo concentrata sui valori bassi. Risolto con bar chart media/mediana affiancate.
 
 ## Output prodotti
 - `notebooks/02_analyze/02_cleaning.ipynb`
@@ -177,15 +190,20 @@
 - `notebooks/02_analyze/06_eda_block2.ipynb`
 - `notebooks/02_analyze/07_eda_block3.ipynb`
 - `notebooks/02_analyze/08_eda_block4.ipynb`
+- `notebooks/02_analyze/09_eda_block5.ipynb`
 - `data/processed/crimes_clean.parquet` — 3.079.424 × 24 colonne
 - `data/processed/crimes_features.parquet` — 3.079.424 × 32 colonne
 - `outputs/05_eda_block1/` — 7 grafici (01-07)
 - `outputs/06_eda_block2/` — 7 grafici (08-14)
 - `outputs/07_eda_block3/` — 8 grafici (15-22)
 - `outputs/08_eda_block4/` — 6 grafici (23-28)
+- `outputs/09_eda_block5/` — 3 grafici (29-31)
 
 ## Note per la fase successiva
 
-1. **EDA Blocco 5** (`09_eda_block5.ipynb`): efficacia della risposta (Q5.1-Q5.2)
-2. **Grafici Blocco 5** salvati in `outputs/09_eda_block5/` con numerazione sequenziale da 29_
-3. **Fonti esterne da raccogliere** per relazione finale: Vehicle Theft post-COVID (FBI UCR, NICB), anomalie 2015-2016, Prop 47 California, Identity Theft anziani e COVID, picco reati domestici 2016-2018
+La fase Analyze (core) è completata. I prossimi step sono:
+
+1. **Fase Construct**: raffinamento visivo dei grafici, eventuale aggiunta di annotazioni, preparazione per la presentazione
+2. **Fase Execute**: redazione della relazione management e del PowerPoint con i grafici esportati
+3. **Fonti esterne da raccogliere** per la relazione finale: Vehicle Theft post-COVID (FBI UCR, NICB), anomalie 2015-2016 LAPD, Prop 47 California, Identity Theft anziani e COVID, picco reati domestici 2016-2018
+4. **EDA avanzata Blocchi 6-7** (opzionale): analisi geospaziale e modelli predittivi — da valutare in base al tempo disponibile
