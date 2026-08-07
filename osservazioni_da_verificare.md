@@ -11,12 +11,13 @@ di sola lettura/segnalazione.
 
 ## 01_plan/01_data_loading.ipynb
 
-### 1. Cella `72111801-e4bf-46bd-a51c-6bc8cf4114b7` (## Conclusions — Plan Phase) - 
+### 1. Cella `72111801-e4bf-46bd-a51c-6bc8cf4114b7` (## Conclusions — Plan Phase) - RISOLTO: cambiato il testo per togliere supposizioni non basate                                                                                              sui dati
+
 > "Years 2015–2016 show anomalous values (a drop in 2015, a spike in 2016), likely related to the transition of the LAPD classification system (from UCR to NIBRS). To be verified and documented in the final report."
 
 **Motivo della segnalazione**: introduce una causa esterna al dataset (un cambio nel sistema di classificazione dei reati da parte dell'LAPD, UCR→NIBRS) senza che nel notebook sia presente alcuna colonna, test statistico o fonte a supporto. Il testo stesso usa un linguaggio dubitativo ("likely related to") e dichiara esplicitamente "to be verified" — quindi è un'ipotesi non ancora testata.
 
-### 2. Cella `72111801-e4bf-46bd-a51c-6bc8cf4114b7` (## Conclusions — Plan Phase)
+### 2. Cella `72111801-e4bf-46bd-a51c-6bc8cf4114b7` (## Conclusions — Plan Phase) - DA NON RISOLVERE, VERIFICARE BLOCCO EDA
 > "Year 2024 incomplete (127,567 records): the truncation month needs to be verified in EDA and handled accordingly in the temporal analyses."
 
 **Motivo della segnalazione**: il conteggio inferiore di record nel 2024 è visibile nell'output della cella precedente (tabella "Records per year"), quindi il *pattern* è supportato dai dati. Tuttavia l'interpretazione della causa — "incomplete" per troncamento del dataset — non è dimostrata in questo notebook (nessun controllo sulla data massima disponibile o su una data di congelamento del dataset); il testo stesso rimanda a una verifica futura ("needs to be verified in EDA").
@@ -27,12 +28,14 @@ di sola lettura/segnalazione.
 
 ## 02_analyze/02_cleaning.ipynb
 
-### 3. Cella `acc496cb-c4ad-40f0-a8c1-04f82410b300` (### 3.3 Handling sentinel coordinates)
+### 3. Cella `acc496cb-c4ad-40f0-a8c1-04f82410b300` (### 3.3 Handling sentinel coordinates) - RISOLTO: documentato con: 
+"As documented in the LAPD dataset description (data.lacity.org): 'Some location fields with missing data are noted as (0°, 0°). Address fields are only provided to the nearest hundred block in order to maintain privacy"
+
 > "In notebook 01 we identified 3,148 records with `(0, 0)` coordinates, which the LAPD uses as a sentinel value to indicate 'unknown location'."
 
 **Motivo della segnalazione**: presenta come fatto stabilito una convenzione di codifica dei dati da parte dell'LAPD, senza citare una fonte né un test nel notebook che lo dimostri (a differenza, ad esempio, dei codici "Vict Descent" più avanti nel progetto, per i quali viene citata esplicitamente la fonte "LAPD Crime Data Dictionary"). È un'ipotesi di dominio non verificata internamente.
 
-### 4. Cella `d24693c1-b66d-470e-b344-10287ca9e8d6` (### Removing duplicates)
+### 4. Cella `d24693c1-b66d-470e-b344-10287ca9e8d6` (### Removing duplicates) - RISOLTO: rimossa la riga di testo indicata
 > "This is therefore a generalized loading error in the original dataset, not a category-specific issue."
 
 **Motivo della segnalazione**: i dati mostrati (duplicati esatti su tutte le colonne, distribuiti su 122 tipi di reato) supportano che i duplicati non siano concentrati in una categoria specifica, ma non dimostrano la causa specifica ("errore di caricamento"). È un'attribuzione causale sul processo di raccolta/caricamento dati non testata (es. nessun controllo su timestamp di inserimento o metadati di importazione).
