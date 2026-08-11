@@ -40,7 +40,7 @@ di sola lettura/segnalazione.
 
 **Motivo della segnalazione**: i dati mostrati (duplicati esatti su tutte le colonne, distribuiti su 122 tipi di reato) supportano che i duplicati non siano concentrati in una categoria specifica, ma non dimostrano la causa specifica ("errore di caricamento"). È un'attribuzione causale sul processo di raccolta/caricamento dati non testata (es. nessun controllo su timestamp di inserimento o metadati di importazione).
 
-### 5. Cella `1c85663b-3f26-4d37-a228-ac1f88bd2623` (## 6. Handling sentinel values in Vict Age)
+### 5. Cella `1c85663b-3f26-4d37-a228-ac1f88bd2623` (## 6. Handling sentinel values in Vict Age) - RISOLTO: eseguito refactoring del testo
 > "the LAPD uses the value `0` to indicate \"unknown age\" (same logic as the sentinel coordinates)"
 
 **Motivo della segnalazione**: estende alla colonna `Vict Age` la stessa assunzione non verificata già segnalata per LAT/LON (voce 3), sempre senza citazione o test nel notebook.
@@ -51,7 +51,7 @@ di sola lettura/segnalazione.
 
 ## 02_analyze/04_feature_engineering.ipynb
 
-### 6. Cella `07bb62db-056d-4230-9b23-037edd2316e0` (## 6. Report delay)
+### 6. Cella `07bb62db-056d-4230-9b23-037edd2316e0` (## 6. Report delay) - RISOLTO: rimossa la riga di testo indicata
 > "Different crimes have very different delays: a homicide is reported immediately, a sexual assault often years later."
 
 **Motivo della segnalazione**: generalizzazione di dominio sui tempi di segnalazione per tipo di reato specifico (omicidio vs. violenza sessuale), presentata come fatto assodato. In questo notebook la colonna `report_delay` viene solo calcolata in aggregato (nessuna scomposizione per tipo di reato); non c'è alcun output che confronti il delay di omicidi rispetto a quello di violenze sessuali per verificare l'affermazione.
@@ -64,31 +64,31 @@ di sola lettura/segnalazione.
 
 ### Cella `6486503f-c56d-4a7f-abf9-2cf3b5c6e08f` (### Observations Q1.1)
 
-**7.** > "consistent with the anomaly already identified in the Plan phase (168k records vs ~200k in the surrounding years). Likely related to the transition of the LAPD classification system."
+- > "consistent with the anomaly already identified in the Plan phase (168k records vs ~200k in the surrounding years). Likely related to the transition of the LAPD classification system."
 
-Motivo: ripete l'ipotesi non verificata sul cambio di sistema di classificazione LAPD (UCR→NIBRS), già segnalata nel notebook 01.
+**Motivo**: ripete l'ipotesi non verificata sul cambio di sistema di classificazione LAPD (UCR→NIBRS), già segnalata nel notebook 01.
 
-**8.** > "coincides with COVID and the lockdowns. Crimes against property decline more than crimes against the person — Simple Assault declines less than the other crimes during 2020 because it includes a component of interpersonal crimes (occurring between people who know each other, in enclosed settings) that doesn't depend on the presence of people on the street. Lockdowns reduce \"opportunity\" crimes (theft, pickpocketing) but not those that occur within personal relationships."
+- > "coincides with COVID and the lockdowns. Crimes against property decline more than crimes against the person — Simple Assault declines less than the other crimes during 2020 because it includes a component of interpersonal crimes (occurring between people who know each other, in enclosed settings) that doesn't depend on the presence of people on the street. Lockdowns reduce \"opportunity\" crimes (theft, pickpocketing) but not those that occur within personal relationships."
 
-Motivo: attribuisce il calo del 2020 al COVID e ai lockdown, e introduce un meccanismo esplicativo ("opportunity crimes" vs "crimini interpersonali") mai testato nel dataset (nessuna variabile su lockdown, mobilità o relazione vittima-sospetto usata a supporto).
+**Motivo**: attribuisce il calo del 2020 al COVID e ai lockdown, e introduce un meccanismo esplicativo ("opportunity crimes" vs "crimini interpersonali") mai testato nel dataset (nessuna variabile su lockdown, mobilità o relazione vittima-sospetto usata a supporto).
 
-**9.** > "A phenomenon documented at the national level, linked to less surveillance during COVID, the economic crisis, and viral social media challenges about how to steal certain car models."
+- > "A phenomenon documented at the national level, linked to less surveillance during COVID, the economic crisis, and viral social media challenges about how to steal certain car models."
 
-Motivo: attribuisce il picco dei furti d'auto 2020-2022 a tre cause esterne (minore sorveglianza da COVID, crisi economica, challenge social virali) senza fonte citata né dato nel notebook a supporto; dichiara "documented at the national level" senza riferimento verificabile.
+**Motivo**: attribuisce il picco dei furti d'auto 2020-2022 a tre cause esterne (minore sorveglianza da COVID, crisi economica, challenge social virali) senza fonte citata né dato nel notebook a supporto; dichiara "documented at the national level" senza riferimento verificabile.
 
 ### Cella `d8c84328-02c8-472b-a818-aca369f0ee7e` (### Observations Q1.2)
 
-**10.** > "The decline is more pronounced for crimes against the person, likely amplified by that year's classification anomaly."
+- > "The decline is more pronounced for crimes against the person, likely amplified by that year's classification anomaly."
 
-Motivo: ripete l'ipotesi non verificata sull'anomalia di classificazione 2015.
+**Motivo**: ripete l'ipotesi non verificata sull'anomalia di classificazione 2015.
 
-**11.** > "**2020 decline (COVID)**: Property drops by -8.3% (from 133,268 to 122,225), Person by -9.8% (from 82,254 to 74,156)."
+- > "**2020 decline (COVID)**: Property drops by -8.3% (from 133,268 to 122,225), Person by -9.8% (from 82,254 to 74,156)."
 
-Motivo: etichetta il calo 2020 come "COVID" nel titolo stesso del paragrafo, senza alcuna verifica interna al notebook (nessuna variabile COVID nel dataset).
+**Motivo**: etichetta il calo 2020 come "COVID" nel titolo stesso del paragrafo, senza alcuna verifica interna al notebook (nessuna variabile COVID nel dataset).
 
-**12.** > "crime against property is more volatile and reactive to external events, while crime against the person is more stable and structural."
+- > "crime against property is more volatile and reactive to external events, while crime against the person is more stable and structural."
 
-Motivo: generalizzazione interpretativa su "eventi esterni" come causa della volatilità, non testata nei dati.
+**Motivo**: generalizzazione interpretativa su "eventi esterni" come causa della volatilità, non testata nei dati.
 
 ### Cella `9ddebde8-644a-4947-941a-a31dc19dae0b` (### Observations Q1.3)
 
