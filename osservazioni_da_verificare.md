@@ -62,9 +62,9 @@ di sola lettura/segnalazione.
 
 ## 02_analyze/05_eda_block1.ipynb
 
-### Cella `6486503f-c56d-4a7f-abf9-2cf3b5c6e08f` (### Observations Q1.1)
+### Cella `6486503f-c56d-4a7f-abf9-2cf3b5c6e08f` (### Observations Q1.1) - RISOLTO
 
-- > "consistent with the anomaly already identified in the Plan phase (168k records vs ~200k in the surrounding years). Likely related to the transition of the LAPD classification system."
+- > "consistent with the anomaly already identified in the Plan phase (168k records vs ~200k in the surrounding years). Likely related to the transition of the LAPD classification system." 
 
 **Motivo**: ripete l'ipotesi non verificata sul cambio di sistema di classificazione LAPD (UCR→NIBRS), già segnalata nel notebook 01.
 
@@ -76,7 +76,7 @@ di sola lettura/segnalazione.
 
 **Motivo**: attribuisce il picco dei furti d'auto 2020-2022 a tre cause esterne (minore sorveglianza da COVID, crisi economica, challenge social virali) senza fonte citata né dato nel notebook a supporto; dichiara "documented at the national level" senza riferimento verificabile.
 
-### Cella `d8c84328-02c8-472b-a818-aca369f0ee7e` (### Observations Q1.2)
+### Cella `d8c84328-02c8-472b-a818-aca369f0ee7e` (### Observations Q1.2) - RISOLTO
 
 - > "The decline is more pronounced for crimes against the person, likely amplified by that year's classification anomaly."
 
