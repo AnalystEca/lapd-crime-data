@@ -90,71 +90,71 @@ di sola lettura/segnalazione.
 
 **Motivo**: generalizzazione interpretativa su "eventi esterni" come causa della volatilità, non testata nei dati.
 
-### Cella `9ddebde8-644a-4947-941a-a31dc19dae0b` (### Observations Q1.3)
+### Cella `9ddebde8-644a-4947-941a-a31dc19dae0b` (### Observations Q1.3) - RISOLTO
 
-**13.** > "The speed and uniformity of this rebound suggests a possible classification- or policy-related effect rather than an actual worsening of crime — a hypothesis that would deserve further investigation with external sources in the final report."
+> "The speed and uniformity of this rebound suggests a possible classification- or policy-related effect rather than an actual worsening of crime — a hypothesis that would deserve further investigation with external sources in the final report."
 
-Motivo: linguaggio dubitativo esplicito ("suggests a possible... hypothesis") su un cambio normativo/di classificazione, senza fonte né verifica nel notebook.
+***Motivo***: linguaggio dubitativo esplicito ("suggests a possible... hypothesis") su un cambio normativo/di classificazione, senza fonte né verifica nel notebook.
 
-**14.** > "2020 — COVID effect: a widespread downward trend, consistent with COVID-19 restrictions and the resulting reduction in urban mobility. The exception is vehicle theft, which increases by +35%. This seemingly counterintuitive figure is likely related to the restrictions themselves: emptier streets and vehicles parked for extended periods may have made this type of crime easier. The phenomenon has been documented at the national level (FBI UCR report, NICB data) and is not specific to Los Angeles."
+> "2020 — COVID effect: a widespread downward trend, consistent with COVID-19 restrictions and the resulting reduction in urban mobility. The exception is vehicle theft, which increases by +35%. This seemingly counterintuitive figure is likely related to the restrictions themselves: emptier streets and vehicles parked for extended periods may have made this type of crime easier. The phenomenon has been documented at the national level (FBI UCR report, NICB data) and is not specific to Los Angeles."
 
-Motivo: attribuzione causale a COVID-19/restrizioni, senza dato di mobilità o restrizioni nel dataset; cita fonti esterne (FBI UCR, NICB) non incluse/verificabili nel notebook.
+**Motivo**: attribuzione causale a COVID-19/restrizioni, senza dato di mobilità o restrizioni nel dataset; cita fonti esterne (FBI UCR, NICB) non incluse/verificabili nel notebook.
 
-**15.** > "Identity Theft normalizes with a -39% decline, suggesting a temporary phenomenon likely linked to accelerated post-pandemic digitalization"
+> "Identity Theft normalizes with a -39% decline, suggesting a temporary phenomenon likely linked to accelerated post-pandemic digitalization"
 
-Motivo: causa socioeconomica/tecnologica esterna ("digitalizzazione post-pandemica") non testata nel dataset.
+**Motivo**: causa socioeconomica/tecnologica esterna ("digitalizzazione post-pandemica") non testata nel dataset.
 
-### Cella `6b111396-ba9c-45ca-857e-870f9f822e3b` (### Observations Q1.4 — Part 1)
+### Cella `6b111396-ba9c-45ca-857e-870f9f822e3b` (### Observations Q1.4 — Part 1) - RISOLTO
 
-**16.** > "Shared minimum in February: both categories reach their lowest point in February, the shortest month, with reduced urban mobility for climate-related reasons."
+> "Shared minimum in February: both categories reach their lowest point in February, the shortest month, with reduced urban mobility for climate-related reasons."
 
-Motivo: causa climatica/di mobilità urbana non misurata nel dataset (nessuna variabile meteo).
+**Motivo**: causa climatica/di mobilità urbana non misurata nel dataset (nessuna variabile meteo).
 
-**17.** > "This trend is likely attributable to holiday-season theft — unattended homes, more goods in cars and crowded stores — phenomena that affect property without necessarily involving the person."
+> "This trend is likely attributable to holiday-season theft — unattended homes, more goods in cars and crowded stores — phenomena that affect property without necessarily involving the person."
 
-Motivo: spiegazione stagionale/sociale (periodo festivo) non testata (nessuna variabile calendario festività nel dataset).
+**Motivo**: spiegazione stagionale/sociale (periodo festivo) non testata (nessuna variabile calendario festività nel dataset).
 
-### Cella `ad510cad-1c12-44d9-9aa2-56428b2cc102` (### Observations Q1.4 — Part 2)
+### Cella `ad510cad-1c12-44d9-9aa2-56428b2cc102` (### Observations Q1.4 — Part 2) - RISOLTO
 
-**18.** > "Hypothesis: it could be linked to periods of higher online activity (holiday shopping, early-year tax filings). To be verified with external sources in the final report."
+> "Hypothesis: it could be linked to periods of higher online activity (holiday shopping, early-year tax filings). To be verified with external sources in the final report."
 
-Motivo: linguaggio dubitativo esplicito ("Hypothesis... could be linked"), causa non verificata nel notebook.
+**Motivo***: linguaggio dubitativo esplicito ("Hypothesis... could be linked"), causa non verificata nel notebook.
 
-**19.** > "Residential burglary, theft from vehicles, and petty theft rise for reasons related to the holiday season (unattended goods, crowded stores, empty homes). Vehicle theft follows the opposite direction: in December people use their cars less, park them in more supervised locations, and pay closer attention."
+> "Residential burglary, theft from vehicles, and petty theft rise for reasons related to the holiday season (unattended goods, crowded stores, empty homes). Vehicle theft follows the opposite direction: in December people use their cars less, park them in more supervised locations, and pay closer attention."
 
-Motivo: spiegazione comportamentale/stagionale (abitudini natalizie) non testata nel dataset.
+**Motivo**: spiegazione comportamentale/stagionale (abitudini natalizie) non testata nel dataset.
 
-### Cella `bf146b2d-d5ac-43f5-923a-8958b48f060a` (## 6. Q1.5 intro)
+### Cella `bf146b2d-d5ac-43f5-923a-8958b48f060a` (## 6. Q1.5 intro) - RISOLTO
 
-**20.** > "records with `hour_occ = 0` (midnight) include a recording artifact — crimes with unknown time coded as 0000."
+> "records with `hour_occ = 0` (midnight) include a recording artifact — crimes with unknown time coded as 0000."
 
-Motivo: assunzione sulla convenzione di codifica dei dati LAPD (0000 = ora sconosciuta) presentata come fatto, senza fonte né test nel notebook che distingua i crimini avvenuti realmente a mezzanotte da quelli con ora sconosciuta.
+**Motivo**: assunzione sulla convenzione di codifica dei dati LAPD (0000 = ora sconosciuta) presentata come fatto, senza fonte né test nel notebook che distingua i crimini avvenuti realmente a mezzanotte da quelli con ora sconosciuta.
 
-### Cella `c525a1a5-f9da-4c7b-a345-6a63b1a41580` (### Observations Q1.5)
+### Cella `c525a1a5-f9da-4c7b-a345-6a63b1a41580` (### Observations Q1.5) - RISOLTO
 
-**21.** > "the Night slot includes ~130k records with unknown time coded as 0000. Values for this slot should be read with caution."
+> "the Night slot includes ~130k records with unknown time coded as 0000. Values for this slot should be read with caution."
 
-Motivo: ripete l'assunzione non verificata della voce 20.
+**Motivo**: ripete l'assunzione non verificata della voce 20.
 
-**22.** > "For Property, the weekend shows slightly lower values than weekdays (Saturday 19,681, Sunday 18,268 vs ~22,000 on weekdays), likely because stores open later and urban mobility is reduced."
+> "For Property, the weekend shows slightly lower values than weekdays (Saturday 19,681, Sunday 18,268 vs ~22,000 on weekdays), likely because stores open later and urban mobility is reduced."
 
-Motivo: causa esplicativa (orari negozi, mobilità urbana) non testata nel dataset.
+**Motivo**: causa esplicativa (orari negozi, mobilità urbana) non testata nel dataset.
 
-**23.** > "Fewer people at work, less urban traffic, fewer opportunities for property crimes during daytime hours."
+> "Fewer people at work, less urban traffic, fewer opportunities for property crimes during daytime hours."
 
-Motivo: spiegazione socioeconomica (occupazione, traffico) non misurata nel dataset.
+**Motivo**: spiegazione socioeconomica (occupazione, traffico) non misurata nel dataset.
 
-**24.** > "Friday records the absolute peaks for Property: Afternoon 70,800, Evening 73,995. End of the work week, crowded stores, packed public transit — maximum exposure to crime opportunities."
+> "Friday records the absolute peaks for Property: Afternoon 70,800, Evening 73,995. End of the work week, crowded stores, packed public transit — maximum exposure to crime opportunities."
 
-Motivo: spiegazione comportamentale (fine settimana lavorativo, affollamento) non testata.
+**Motivo**: spiegazione comportamentale (fine settimana lavorativo, affollamento) non testata.
 
-**25.** > "The start and peak of the weekend, with more nighttime activity, alcohol consumption, and high-risk interactions."
+> "The start and peak of the weekend, with more nighttime activity, alcohol consumption, and high-risk interactions."
 
-Motivo: causa socio-comportamentale (consumo di alcol, vita notturna) non misurata nel dataset.
+**Motivo**: causa socio-comportamentale (consumo di alcol, vita notturna) non misurata nel dataset.
 
-**26.** > "A pattern consistent with nightlife: more alcohol, less oversight, more high-risk interactions."
+> "A pattern consistent with nightlife: more alcohol, less oversight, more high-risk interactions."
 
-Motivo: ripete la stessa tipologia di spiegazione non verificata della voce 25.
+**Motivo**: ripete la stessa tipologia di spiegazione non verificata della voce 25.
 
 **Notebook 05_eda_block1: 20 osservazioni segnalate**
 
