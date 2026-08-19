@@ -162,67 +162,67 @@ di sola lettura/segnalazione.
 
 ## 02_analyze/06_eda_block2.ipynb
 
-### Cella `dde6cfb1-f9b5-437b-af60-345d8829192a` (### Observations Q2.1 — Distribution by sex)
+### Cella `dde6cfb1-f9b5-437b-af60-345d8829192a` (### Observations Q2.1 — Distribution by sex) - RISOLTO
 
-**27.** > "A more balanced distribution than one might expect, likely because the dataset includes all crime types, including domestic ones where women are overrepresented as victims."
+> "A more balanced distribution than one might expect, likely because the dataset includes all crime types, including domestic ones where women are overrepresented as victims."
 
-Motivo: linguaggio dubitativo ("likely because") su una causa che viene effettivamente testata solo più avanti, nel Blocco 3 (Q3.2); a questo punto del progetto non è ancora verificata.
+**Motivo**: linguaggio dubitativo ("likely because") su una causa che viene effettivamente testata solo più avanti, nel Blocco 3 (Q3.2); a questo punto del progetto non è ancora verificata.
 
-**28.** > "the male overrepresentation typical of criminological literature (public violence) appears attenuated in this aggregate dataset."
+> "the male overrepresentation typical of criminological literature (public violence) appears attenuated in this aggregate dataset."
 
-Motivo: riferimento a "criminological literature" generico, senza fonte citata né test nel notebook.
+**Motivo**: riferimento a "criminological literature" generico, senza fonte citata né test nel notebook.
 
-### Cella `d9976b1d-6c3a-44e5-9f5e-c43a44bad424` (### Observations Q2.1 — Distribution by age group)
+### Cella `d9976b1d-6c3a-44e5-9f5e-c43a44bad424` (### Observations Q2.1 — Distribution by age group) - RISOLTO
 
-**29.** > "abuse of minors is historically among the most underreported crimes — often discovered years later or never reported — which introduces significant selection bias."
+> "abuse of minors is historically among the most underreported crimes — often discovered years later or never reported — which introduces significant selection bias."
 
-Motivo: conoscenza di dominio criminologico (sottostima strutturale dell'abuso minorile) citata senza fonte né verifica nel notebook.
+**Motivo**: conoscenza di dominio criminologico (sottostima strutturale dell'abuso minorile) citata senza fonte né verifica nel notebook.
 
-### Cella `5b9d21e6-9b6f-4d7f-9d56-ad9be1c05c6f` (### Observations Q2.2 — Victim profile by crime macro-category)
+### Cella `5b9d21e6-9b6f-4d7f-9d56-ad9be1c05c6f` (### Observations Q2.2 — Victim profile by crime macro-category) - RISOLTO
 
-**30.** > "in the 35-64 group a significant difference emerges, likely related to greater male exposure in work and mobility contexts."
+> "in the 35-64 group a significant difference emerges, likely related to greater male exposure in work and mobility contexts."
 
-Motivo: causa socioeconomica (esposizione lavorativa/mobilità per genere) non misurata nel dataset.
+**Motivo**: causa socioeconomica (esposizione lavorativa/mobilità per genere) non misurata nel dataset.
 
-**31.** > "A pattern consistent with the literature on sexual abuse and domestic violence, which disproportionately affects females already at the youngest age groups."
+> "A pattern consistent with the literature on sexual abuse and domestic violence, which disproportionately affects females already at the youngest age groups."
 
-Motivo: riferimento a letteratura esterna generica, senza fonte citata.
+**Motivo**: riferimento a letteratura esterna generica, senza fonte citata.
 
-**32.** > "This could reflect greater exposure of elderly men to street crime (robbery, assault)."
+> "This could reflect greater exposure of elderly men to street crime (robbery, assault)."
 
-Motivo: linguaggio dubitativo ("could reflect"), ipotesi non testata nel dataset.
+**Motivo**: linguaggio dubitativo ("could reflect"), ipotesi non testata nel dataset.
 
-### Cella `9fec3bcd-8dd4-4c58-82c8-15120a272ea4` (### Observations Q2.3 — Top 10 crimes against Senior victims)
+### Cella `9fec3bcd-8dd4-4c58-82c8-15120a272ea4` (### Observations Q2.3 — Top 10 crimes against Senior victims) - RISOLTO
 
-**33.** > "Physical vulnerability when defending the home and the higher likelihood of being home during the day make the elderly a preferred target for this type of offense."
+> "Physical vulnerability when defending the home and the higher likelihood of being home during the day make the elderly a preferred target for this type of offense."
 
-Motivo: ipotesi esplicativa (vulnerabilità fisica, presenza in casa di giorno) non testata nel dataset (nessun dato su presenza in casa o vulnerabilità).
+**Motivo**: ipotesi esplicativa (vulnerabilità fisica, presenza in casa di giorno) non testata nel dataset (nessun dato su presenza in casa o vulnerabilità).
 
-**34.** > "consistent with the well-known vulnerability of the elderly to digital scams and credential theft."
+> "consistent with the well-known vulnerability of the elderly to digital scams and credential theft."
 
-Motivo: riferimento a conoscenza di dominio ("well-known vulnerability") non verificata nel notebook.
+**Motivo**: riferimento a conoscenza di dominio ("well-known vulnerability") non verificata nel notebook.
 
-**35.** > "The elderly's reduced physical reactivity makes them easy targets for this type of opportunistic offense."
+> "The elderly's reduced physical reactivity makes them easy targets for this type of opportunistic offense."
 
-Motivo: assunzione fisiologica/comportamentale non misurata nel dataset.
+**Motivo**: assunzione fisiologica/comportamentale non misurata nel dataset.
 
-### Cella `886b849d-fe5a-4703-938b-b448ac5652e2` (### Observations Q2.3 — Time trend of top 5 crimes against Senior)
+### Cella `886b849d-fe5a-4703-938b-b448ac5652e2` (### Observations Q2.3 — Time trend of top 5 crimes against Senior) - RISOLTO
 
-**36.** > "consistent with the LAPD classification anomaly already documented in Q1.3, not an actual improvement in safety for the elderly."
+> "consistent with the LAPD classification anomaly already documented in Q1.3, not an actual improvement in safety for the elderly."
 
-Motivo: ripete l'ipotesi non verificata sul cambio di classificazione LAPD.
+**Motivo**: ripete l'ipotesi non verificata sul cambio di classificazione LAPD.
 
-**37.** > "Shows a significant decline from 2018 to 2020, likely related to the wider adoption of home security systems (cameras, alarms), which became more affordable in those years."
+> "Shows a significant decline from 2018 to 2020, likely related to the wider adoption of home security systems (cameras, alarms), which became more affordable in those years."
 
-Motivo: causa tecnologica/socioeconomica (adozione di sistemi di sicurezza domestica) non misurata nel dataset.
+**Motivo**: causa tecnologica/socioeconomica (adozione di sistemi di sicurezza domestica) non misurata nel dataset.
 
-**38.** > "Explosive rebound from 2020 to 2023: COVID lockdowns forced the elderly to increase their use of digital services without adequate preparation, creating ideal conditions for scammers."
+> "Explosive rebound from 2020 to 2023: COVID lockdowns forced the elderly to increase their use of digital services without adequate preparation, creating ideal conditions for scammers."
 
-Motivo: attribuzione causale al COVID e ai lockdown, non testata nel dataset (nessuna variabile COVID).
+**Motivo**: attribuzione causale al COVID e ai lockdown, non testata nel dataset (nessuna variabile COVID).
 
-**39.** > "Petty Theft shows a peak in 2018 followed by a decline during COVID (less mobility, fewer opportunities for pickpocketing), then a partial rebound."
+> "Petty Theft shows a peak in 2018 followed by a decline during COVID (less mobility, fewer opportunities for pickpocketing), then a partial rebound."
 
-Motivo: attribuzione causale al COVID/mobilità ridotta, non testata nel dataset.
+**Motivo**: attribuzione causale al COVID/mobilità ridotta, non testata nel dataset.
 
 **Notebook 06_eda_block2: 13 osservazioni segnalate**
 
@@ -232,43 +232,43 @@ Motivo: attribuzione causale al COVID/mobilità ridotta, non testata nel dataset
 
 ### Cella `90aec861-5e44-4c87-9d69-95fe58879262` (### Observations Q3.1 — Volume of domestic crimes)
 
-**40.** > "**Underreporting**: domestic crimes are historically among the most underreported. Victims often don't report out of fear of retaliation, economic dependence on the perpetrator, shame, or a desire to protect the children involved."
+> "**Underreporting**: domestic crimes are historically among the most underreported. Victims often don't report out of fear of retaliation, economic dependence on the perpetrator, shame, or a desire to protect the children involved."
 
-Motivo: conoscenza di dominio criminologico/sociologico su cause di mancata denuncia, senza fonte citata né test nel notebook.
+**Motivo**: conoscenza di dominio criminologico/sociologico su cause di mancata denuncia, senza fonte citata né test nel notebook.
 
 ### Cella `a6fa86d9-af23-4799-a254-db841d09b155` (### Observations Q3.1 — Yearly trend of domestic crimes)
 
-**41.** > "The 2015 minimum is consistent with the LAPD classification anomaly already documented in previous blocks — it doesn't represent a real improvement."
+> "The 2015 minimum is consistent with the LAPD classification anomaly already documented in previous blocks — it doesn't represent a real improvement."
 
-Motivo: ripete l'ipotesi non verificata sul cambio di classificazione LAPD.
+**Motivo**: ripete l'ipotesi non verificata sul cambio di classificazione LAPD.
 
-**42.** > "The speed and magnitude of the increase suggests a possible change in LAPD recording policies, or the effect of awareness campaigns that increased reporting during that period. To be verified with external sources in the final report."
+> "The speed and magnitude of the increase suggests a possible change in LAPD recording policies, or the effect of awareness campaigns that increased reporting during that period. To be verified with external sources in the final report."
 
-Motivo: linguaggio dubitativo esplicito ("suggests a possible... to be verified"), due cause alternative non testate nel notebook.
+**Motivo**: linguaggio dubitativo esplicito ("suggests a possible... to be verified"), due cause alternative non testate nel notebook.
 
-**43.** > "International criminological literature has documented an increase in domestic crimes during COVID lockdowns in most cities. Los Angeles instead shows a declining trend."
+> "International criminological literature has documented an increase in domestic crimes during COVID lockdowns in most cities. Los Angeles instead shows a declining trend."
 
-Motivo: riferimento a letteratura internazionale generica, senza fonte citata né dato nel dataset che la testi.
+**Motivo**: riferimento a letteratura internazionale generica, senza fonte citata né dato nel dataset che la testi.
 
-**44.** > "Three possible explanations, not mutually exclusive: Changes in LAPD classification policies / Specific domestic violence intervention programs activated during COVID / Increased underreporting: with victims confined at home with the perpetrator, reporting was even harder than usual."
+> "Three possible explanations, not mutually exclusive: Changes in LAPD classification policies / Specific domestic violence intervention programs activated during COVID / Increased underreporting: with victims confined at home with the perpetrator, reporting was even harder than usual."
 
-Motivo: tre ipotesi esplicitamente presentate come "possibili" e non verificate, nessuna delle quali testata con dati o metriche nel notebook.
+**Motivo**: tre ipotesi esplicitamente presentate come "possibili" e non verificate, nessuna delle quali testata con dati o metriche nel notebook.
 
 ### Cella `a4617670-1ee3-4a74-8565-6e2ab6c0f8af` (### Observations Q3.3 — minors)
 
-**45.** > "in this context, minors recorded as victims were probably present during domestic violence and recorded as secondary victims, or are adolescents in romantic relationships"
+> "in this context, minors recorded as victims were probably present during domestic violence and recorded as secondary victims, or are adolescents in romantic relationships"
 
-Motivo: linguaggio dubitativo ("probably"), ipotesi non testata nel notebook (nessun dato su ruolo "vittima secondaria" o stato di relazione).
+**Motivo**: linguaggio dubitativo ("probably"), ipotesi non testata nel notebook (nessun dato su ruolo "vittima secondaria" o stato di relazione).
 
 ### Cella `724ef7d6-beac-4da4-b34e-5d0896393ddf` (### Observations Q3.4 — Mocodes)
 
-**46.** > "strangulation is a criminological indicator of high risk of escalation and recidivism."
+> "strangulation is a criminological indicator of high risk of escalation and recidivism."
 
-Motivo: riferimento a conoscenza criminologica specialistica, senza fonte citata nel notebook.
+**Motivo**: riferimento a conoscenza criminologica specialistica, senza fonte citata nel notebook.
 
-**47.** > "The suspect's intoxication is recorded in about 5% of cases. It's a factor correlated with domestic violence but not its cause."
+> "The suspect's intoxication is recorded in about 5% of cases. It's a factor correlated with domestic violence but not its cause."
 
-Motivo: afferma una relazione di correlazione/causa con la violenza domestica senza alcun test statistico calcolato nel notebook (nessuna correlazione, nessun confronto tra gruppi).
+**Motivo**: afferma una relazione di correlazione/causa con la violenza domestica senza alcun test statistico calcolato nel notebook (nessuna correlazione, nessun confronto tra gruppi).
 
 **Notebook 07_eda_block3: 8 osservazioni segnalate**
 
@@ -278,19 +278,19 @@ Motivo: afferma una relazione di correlazione/causa con la violenza domestica se
 
 ### Cella `57ce322f-4391-4d10-99b7-e8d570e66f58` (### Observations Q4.1 — Volume by firearm type)
 
-**48.** > "**Hand Gun**: 53,523 (~46%) — the dominant weapon, easy to obtain and to conceal"
+> "**Hand Gun**: 53,523 (~46%) — the dominant weapon, easy to obtain and to conceal"
 
-Motivo: assunzione su disponibilità/occultabilità dell'arma non misurata nel dataset (nessun dato su mercato armi o dimensioni).
+**Motivo**: assunzione su disponibilità/occultabilità dell'arma non misurata nel dataset (nessun dato su mercato armi o dimensioni).
 
-**49.** > "the dataset confirms that firearm crimes predominantly involve common, compact weapons that are easy to obtain. More sophisticated weapons that are harder to conceal (assault rifles, automatic weapons) are almost absent."
+> "the dataset confirms that firearm crimes predominantly involve common, compact weapons that are easy to obtain. More sophisticated weapons that are harder to conceal (assault rifles, automatic weapons) are almost absent."
 
-Motivo: ripete la stessa assunzione non verificata della voce 48 ("easy to obtain"/"harder to conceal").
+**Motivo**: ripete la stessa assunzione non verificata della voce 48 ("easy to obtain"/"harder to conceal").
 
 ### Cella `9ac118ed-6f25-47eb-9c2f-e57bf395d327` (### Observations Q4.1 — Yearly trend of firearm crimes)
 
-**50.** > "The 2015 decline is consistent with the LAPD classification anomaly already documented in previous blocks."
+> "The 2015 decline is consistent with the LAPD classification anomaly already documented in previous blocks."
 
-Motivo: ripete l'ipotesi non verificata sul cambio di classificazione LAPD.
+**Motivo**: ripete l'ipotesi non verificata sul cambio di classificazione LAPD.
 
 **Notebook 08_eda_block4: 3 osservazioni segnalate**
 
@@ -302,19 +302,19 @@ Nota: in questo notebook la maggior parte dei confronti (es. quote di genere/et�
 
 ### Cella `791e81eb-f40a-4b32-8864-310138ca34e7` (### Observations Q5.1 — Clearance Rate by crime category)
 
-**51.** > "**Other**: 37.0% — a residual category with an intermediate rate, consistent with the fact that it includes crimes where the suspect is often already known to authorities (disturbing the peace, false reports, contempt of court)."
+> "**Other**: 37.0% — a residual category with an intermediate rate, consistent with the fact that it includes crimes where the suspect is often already known to authorities (disturbing the peace, false reports, contempt of court)."
 
-Motivo: assunzione sul fatto che il sospetto sia "già noto alle autorità" per la categoria "Other", non testata nel notebook (nessuna scomposizione del clearance rate per singolo tipo di reato entro "Other").
+**Motivo**: assunzione sul fatto che il sospetto sia "già noto alle autorità" per la categoria "Other", non testata nel notebook (nessuna scomposizione del clearance rate per singolo tipo di reato entro "Other").
 
-**52.** > "Theft, burglary, and vandalism are structurally harder to resolve due to the frequent absence of witnesses or direct evidence."
+> "Theft, burglary, and vandalism are structurally harder to resolve due to the frequent absence of witnesses or direct evidence."
 
-Motivo: causa esplicativa (assenza di testimoni/prove) non misurata nel dataset (nessuna variabile su testimoni o prove disponibili).
+**Motivo**: causa esplicativa (assenza di testimoni/prove) non misurata nel dataset (nessuna variabile su testimoni o prove disponibili).
 
 ### Cella `965c19b5-a37f-4ed7-af1c-6bb01619e9b5` (### Observations Q5.2 — Report Delay by crime category)
 
-**53.** > "This is consistent with the nature of the two types of offense: assaults and violent crimes are traumatic events that get reported immediately, while theft and burglary are often discovered with a delay."
+> "This is consistent with the nature of the two types of offense: assaults and violent crimes are traumatic events that get reported immediately, while theft and burglary are often discovered with a delay."
 
-Motivo: spiegazione psicologica/comportamentale ("eventi traumatici segnalati immediatamente") non testata nel dataset.
+**Motivo**: spiegazione psicologica/comportamentale ("eventi traumatici segnalati immediatamente") non testata nel dataset.
 
 **Notebook 09_eda_block5: 3 osservazioni segnalate**
 
@@ -326,15 +326,15 @@ Nota: non ho segnalato l'ipotesi nella cella `8a49f1de` sulla composizione per t
 
 ### Cella `cf7283ea-721e-4bc8-9fd9-d87dfc24e846` (titolo / intro)
 
-**54.** > "the LAT/LON coordinates in the dataset are often obfuscated to the block centroid (~100m precision), as documented in the project limitations."
+> "the LAT/LON coordinates in the dataset are often obfuscated to the block centroid (~100m precision), as documented in the project limitations."
 
-Motivo: afferma una caratteristica tecnica della fonte dati (offuscamento a livello di centroide dell'isolato) come fatto documentato, ma nel notebook non compare alcun test o verifica che lo dimostri (es. nessun controllo di clustering delle coordinate su punti fissi).
+**Motivo**: afferma una caratteristica tecnica della fonte dati (offuscamento a livello di centroide dell'isolato) come fatto documentato, ma nel notebook non compare alcun test o verifica che lo dimostri (es. nessun controllo di clustering delle coordinate su punti fissi).
 
 ### Cella `21b36b74-d603-4b66-807b-a15471615ee4` (### Observations Q6.2 — Hotspot persistence over time)
 
-**55.** > "Exception: the 2015 period shows a peak above average, consistent with the LAPD classification anomaly already documented in previous blocks."
+> "Exception: the 2015 period shows a peak above average, consistent with the LAPD classification anomaly already documented in previous blocks."
 
-Motivo: ripete l'ipotesi non verificata sul cambio di classificazione LAPD.
+**Motivo**: ripete l'ipotesi non verificata sul cambio di classificazione LAPD.
 
 **Notebook 10_advanced_eda_block1: 2 osservazioni segnalate**
 
@@ -346,21 +346,21 @@ Nota: la maggior parte delle affermazioni in questo notebook (Moran's I, Getis-O
 
 ### Cella `16454d22-785e-4ae4-ae6b-05b86ae88091` (### Observations Q7.1 — 7-day crime volume forecast)
 
-**56.** > "**Anomalous peaks**: the peaks in the actual line (early January, February) likely correspond to particular days (New Year's, special events) that the model can't capture without holiday information."
+> "**Anomalous peaks**: the peaks in the actual line (early January, February) likely correspond to particular days (New Year's, special events) that the model can't capture without holiday information."
 
-Motivo: linguaggio dubitativo ("likely correspond to"), ipotesi su date/eventi specifici non verificata nel notebook (nessuna variabile calendario/festività usata).
+**Motivo**: linguaggio dubitativo ("likely correspond to"), ipotesi su date/eventi specifici non verificata nel notebook (nessuna variabile calendario/festività usata).
 
 ### Cella `91f3ac70-e418-42dc-a027-cd06326b740f` (### Observations Q7.3 — Spatio-temporal co-occurrence)
 
-**57.** > "The coordinates in the dataset are obfuscated to the block centroid (~100m precision), as documented in the project limitations, which in any case makes it impossible to distinguish events that occurred in adjacent residences."
+> "The coordinates in the dataset are obfuscated to the block centroid (~100m precision), as documented in the project limitations, which in any case makes it impossible to distinguish events that occurred in adjacent residences."
 
-Motivo: ripete (terza occorrenza nel progetto, dopo il notebook 10) l'affermazione non verificata sull'offuscamento delle coordinate al centroide dell'isolato, presentata come "documented" senza che nel notebook compaia il test/la verifica corrispondente.
+**Motivo**: ripete (terza occorrenza nel progetto, dopo il notebook 10) l'affermazione non verificata sull'offuscamento delle coordinate al centroide dell'isolato, presentata come "documented" senza che nel notebook compaia il test/la verifica corrispondente.
 
 ### Cella `93bc35dc-410c-40a2-b1d3-c5496d7c8ab2` (## 5. Q7.4 — Re-victimization patterns, nota "not implemented")
 
-**58.** > "the coordinates in the dataset are obfuscated to the block centroid (~100m precision), making the distinction between \"same address\" and \"same 500m×500m cell\" less meaningful than it seems."
+> "the coordinates in the dataset are obfuscated to the block centroid (~100m precision), making the distinction between \"same address\" and \"same 500m×500m cell\" less meaningful than it seems."
 
-Motivo: ulteriore ripetizione della stessa affermazione non verificata (voce 54, 57).
+**Motivo**: ulteriore ripetizione della stessa affermazione non verificata (voce 54, 57).
 
 **Notebook 11_advanced_eda_block2: 3 osservazioni segnalate**
 
