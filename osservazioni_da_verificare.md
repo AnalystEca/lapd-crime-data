@@ -230,13 +230,13 @@ di sola lettura/segnalazione.
 
 ## 02_analyze/07_eda_block3.ipynb
 
-### Cella `90aec861-5e44-4c87-9d69-95fe58879262` (### Observations Q3.1 — Volume of domestic crimes)
+### Cella `90aec861-5e44-4c87-9d69-95fe58879262` (### Observations Q3.1 — Volume of domestic crimes) - RISOLTO
 
 > "**Underreporting**: domestic crimes are historically among the most underreported. Victims often don't report out of fear of retaliation, economic dependence on the perpetrator, shame, or a desire to protect the children involved."
 
 **Motivo**: conoscenza di dominio criminologico/sociologico su cause di mancata denuncia, senza fonte citata né test nel notebook.
 
-### Cella `a6fa86d9-af23-4799-a254-db841d09b155` (### Observations Q3.1 — Yearly trend of domestic crimes)
+### Cella `a6fa86d9-af23-4799-a254-db841d09b155` (### Observations Q3.1 — Yearly trend of domestic crimes) - RISOLTO
 
 > "The 2015 minimum is consistent with the LAPD classification anomaly already documented in previous blocks — it doesn't represent a real improvement."
 
@@ -254,13 +254,13 @@ di sola lettura/segnalazione.
 
 **Motivo**: tre ipotesi esplicitamente presentate come "possibili" e non verificate, nessuna delle quali testata con dati o metriche nel notebook.
 
-### Cella `a4617670-1ee3-4a74-8565-6e2ab6c0f8af` (### Observations Q3.3 — minors)
+### Cella `a4617670-1ee3-4a74-8565-6e2ab6c0f8af` (### Observations Q3.3 — minors) - RISOLTO
 
 > "in this context, minors recorded as victims were probably present during domestic violence and recorded as secondary victims, or are adolescents in romantic relationships"
 
 **Motivo**: linguaggio dubitativo ("probably"), ipotesi non testata nel notebook (nessun dato su ruolo "vittima secondaria" o stato di relazione).
 
-### Cella `724ef7d6-beac-4da4-b34e-5d0896393ddf` (### Observations Q3.4 — Mocodes)
+### Cella `724ef7d6-beac-4da4-b34e-5d0896393ddf` (### Observations Q3.4 — Mocodes) - RISOLTO
 
 > "strangulation is a criminological indicator of high risk of escalation and recidivism."
 
