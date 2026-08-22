@@ -276,7 +276,7 @@ di sola lettura/segnalazione.
 
 ## 02_analyze/08_eda_block4.ipynb
 
-### Cella `57ce322f-4391-4d10-99b7-e8d570e66f58` (### Observations Q4.1 — Volume by firearm type)
+### Cella `57ce322f-4391-4d10-99b7-e8d570e66f58` (### Observations Q4.1 — Volume by firearm type) - RISOLTO
 
 > "**Hand Gun**: 53,523 (~46%) — the dominant weapon, easy to obtain and to conceal"
 
@@ -286,7 +286,7 @@ di sola lettura/segnalazione.
 
 **Motivo**: ripete la stessa assunzione non verificata della voce 48 ("easy to obtain"/"harder to conceal").
 
-### Cella `9ac118ed-6f25-47eb-9c2f-e57bf395d327` (### Observations Q4.1 — Yearly trend of firearm crimes)
+### Cella `9ac118ed-6f25-47eb-9c2f-e57bf395d327` (### Observations Q4.1 — Yearly trend of firearm crimes) - RISOLTO
 
 > "The 2015 decline is consistent with the LAPD classification anomaly already documented in previous blocks."
 
@@ -300,7 +300,7 @@ Nota: in questo notebook la maggior parte dei confronti (es. quote di genere/et�
 
 ## 02_analyze/09_eda_block5.ipynb
 
-### Cella `791e81eb-f40a-4b32-8864-310138ca34e7` (### Observations Q5.1 — Clearance Rate by crime category)
+### Cella `791e81eb-f40a-4b32-8864-310138ca34e7` (### Observations Q5.1 — Clearance Rate by crime category) - RISOLTO
 
 > "**Other**: 37.0% — a residual category with an intermediate rate, consistent with the fact that it includes crimes where the suspect is often already known to authorities (disturbing the peace, false reports, contempt of court)."
 
@@ -310,7 +310,7 @@ Nota: in questo notebook la maggior parte dei confronti (es. quote di genere/et�
 
 **Motivo**: causa esplicativa (assenza di testimoni/prove) non misurata nel dataset (nessuna variabile su testimoni o prove disponibili).
 
-### Cella `965c19b5-a37f-4ed7-af1c-6bb01619e9b5` (### Observations Q5.2 — Report Delay by crime category)
+### Cella `965c19b5-a37f-4ed7-af1c-6bb01619e9b5` (### Observations Q5.2 — Report Delay by crime category) - RISOLTO
 
 > "This is consistent with the nature of the two types of offense: assaults and violent crimes are traumatic events that get reported immediately, while theft and burglary are often discovered with a delay."
 
@@ -324,13 +324,13 @@ Nota: non ho segnalato l'ipotesi nella cella `8a49f1de` sulla composizione per t
 
 ## 02_analyze/10_advanced_eda_block1.ipynb
 
-### Cella `cf7283ea-721e-4bc8-9fd9-d87dfc24e846` (titolo / intro)
+### Cella `cf7283ea-721e-4bc8-9fd9-d87dfc24e846` (titolo / intro) - RISOLTO
 
 > "the LAT/LON coordinates in the dataset are often obfuscated to the block centroid (~100m precision), as documented in the project limitations."
 
 **Motivo**: afferma una caratteristica tecnica della fonte dati (offuscamento a livello di centroide dell'isolato) come fatto documentato, ma nel notebook non compare alcun test o verifica che lo dimostri (es. nessun controllo di clustering delle coordinate su punti fissi).
 
-### Cella `21b36b74-d603-4b66-807b-a15471615ee4` (### Observations Q6.2 — Hotspot persistence over time)
+### Cella `21b36b74-d603-4b66-807b-a15471615ee4` (### Observations Q6.2 — Hotspot persistence over time) - RISOLTO
 
 > "Exception: the 2015 period shows a peak above average, consistent with the LAPD classification anomaly already documented in previous blocks."
 
@@ -344,19 +344,19 @@ Nota: la maggior parte delle affermazioni in questo notebook (Moran's I, Getis-O
 
 ## 02_analyze/11_advanced_eda_block2.ipynb
 
-### Cella `16454d22-785e-4ae4-ae6b-05b86ae88091` (### Observations Q7.1 — 7-day crime volume forecast)
+### Cella `16454d22-785e-4ae4-ae6b-05b86ae88091` (### Observations Q7.1 — 7-day crime volume forecast) - RISOLTO
 
 > "**Anomalous peaks**: the peaks in the actual line (early January, February) likely correspond to particular days (New Year's, special events) that the model can't capture without holiday information."
 
 **Motivo**: linguaggio dubitativo ("likely correspond to"), ipotesi su date/eventi specifici non verificata nel notebook (nessuna variabile calendario/festività usata).
 
-### Cella `91f3ac70-e418-42dc-a027-cd06326b740f` (### Observations Q7.3 — Spatio-temporal co-occurrence)
+### Cella `91f3ac70-e418-42dc-a027-cd06326b740f` (### Observations Q7.3 — Spatio-temporal co-occurrence) - RISOLTO
 
 > "The coordinates in the dataset are obfuscated to the block centroid (~100m precision), as documented in the project limitations, which in any case makes it impossible to distinguish events that occurred in adjacent residences."
 
 **Motivo**: ripete (terza occorrenza nel progetto, dopo il notebook 10) l'affermazione non verificata sull'offuscamento delle coordinate al centroide dell'isolato, presentata come "documented" senza che nel notebook compaia il test/la verifica corrispondente.
 
-### Cella `93bc35dc-410c-40a2-b1d3-c5496d7c8ab2` (## 5. Q7.4 — Re-victimization patterns, nota "not implemented")
+### Cella `93bc35dc-410c-40a2-b1d3-c5496d7c8ab2` (## 5. Q7.4 — Re-victimization patterns, nota "not implemented") - RISOLTO
 
 > "the coordinates in the dataset are obfuscated to the block centroid (~100m precision), making the distinction between \"same address\" and \"same 500m×500m cell\" less meaningful than it seems."
 
