@@ -182,14 +182,14 @@ Nessun altro rilievo sistemico di questo tipo è emerso negli altri notebook: le
 
 Tutte le occorrenze di "We/we" seguito da un verbo d'azione nelle celle markdown, per notebook. Riformulazione proposta in forma impersonale/passiva, preservando il significato tecnico.
 
-### 01_plan/01_data_loading.ipynb
+### 01_plan/01_data_loading.ipynb - RISOLTO
 
 | # | Cella (indice + tipo) | Testo originale | Riformulazione suggerita |
 |---|---|---|---|
 | 1 | Cella `47246899` (markdown, "3. Column verification and alignment") | "Let's compare the column names of the two DataFrames before concatenation." | "The column names of the two DataFrames are compared before concatenation." |
 | 2 | Cella `a4bd2530` (markdown, "6. LAT/LON normalization") | "Before converting, we normalize the format by replacing the comma with a period." | "Before conversion, the format is normalized by replacing the comma with a period." |
 
-### 02_analyze/02_cleaning.ipynb
+### 02_analyze/02_cleaning.ipynb - RISOLTO
 
 | # | Cella (indice + tipo) | Testo originale | Riformulazione suggerita |
 |---|---|---|---|
@@ -198,7 +198,7 @@ Tutte le occorrenze di "We/we" seguito da un verbo d'azione nelle celle markdown
 | 5 | Cella `acc496cb` (markdown, "3.3 Handling sentinel coordinates") | "We replace them with `NaN` instead of dropping the records: this way the records remain available..." | "They are replaced with `NaN` instead of dropping the records: this way the records remain available..." |
 | 6 | Cella `89176322` (markdown, "8. Saving the cleaned dataset") | "We save the cleaned DataFrame as `crimes_clean.parquet` in `data/processed/`." | "The cleaned DataFrame is saved as `crimes_clean.parquet` in `data/processed/`." |
 
-### 02_analyze/04_feature_engineering.ipynb
+### 02_analyze/04_feature_engineering.ipynb - RISOLTO
 
 | # | Cella (indice + tipo) | Testo originale | Riformulazione suggerita |
 |---|---|---|---|
@@ -209,7 +209,7 @@ Tutte le occorrenze di "We/we" seguito da un verbo d'azione nelle celle markdown
 | 11 | Cella `07bb62db` (markdown, "6. Report delay") | "We calculate the difference in days between the report date (`Date Rptd`) and the date the crime occurred (`DATE OCC`)." | "The difference in days between the report date (`Date Rptd`) and the date the crime occurred (`DATE OCC`) is calculated." |
 | 12 | Cella `b50ee9a0` (markdown, "7. Domestic crime flag") | "We create a boolean column `is_domestic` to quickly identify domestic crimes." | "A boolean column `is_domestic` is created to quickly identify domestic crimes." |
 
-### 02_analyze/05_eda_block1.ipynb
+### 02_analyze/05_eda_block1.ipynb - RISOLTO
 
 | # | Cella (indice + tipo) | Testo originale | Riformulazione suggerita |
 |---|---|---|---|
