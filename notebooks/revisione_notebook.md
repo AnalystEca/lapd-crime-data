@@ -223,7 +223,7 @@ Tutte le occorrenze di "We/we" seguito da un verbo d'azione nelle celle markdown
 | 20 | Cella `c5de5616` (markdown, "Q1.4 — Part 2") | "We dig deeper by analyzing the top 5 Property crimes individually to identify which types drive those peaks." | "A deeper analysis of the top 5 Property crimes individually identifies which types drive those peaks." |
 | 21 | Cella `bf146b2d` (markdown, "6. Q1.5") | "We analyze the distribution of crimes by time slot and day of the week, stratifying by macro-category (Person vs Property)." | "The distribution of crimes by time slot and day of the week is analyzed, stratified by macro-category (Person vs Property)." |
 
-### 02_analyze/06_eda_block2.ipynb
+### 02_analyze/06_eda_block2.ipynb - FATTO
 
 | # | Cella (indice + tipo) | Testo originale | Riformulazione suggerita |
 |---|---|---|---|
@@ -236,7 +236,7 @@ Tutte le occorrenze di "We/we" seguito da un verbo d'azione nelle celle markdown
 | 28 | Cella `72116042` (markdown, "4. Q2.3") | "We analyze Senior (65+) victims to understand whether they concentrate in specific crime types and specific LAPD areas." | "Senior (65+) victims are analyzed to understand whether they concentrate in specific crime types and specific LAPD areas." |
 | 29 | Cella `72116042` (markdown, "4. Q2.3") | "We also calculate the trend over time to check whether their exposure has increased or decreased over the 2010–2024 period." | "The trend over time is also calculated to check whether their exposure has increased or decreased over the 2010–2024 period." |
 
-### 02_analyze/07_eda_block3.ipynb
+### 02_analyze/07_eda_block3.ipynb - RISOLTO
 
 | # | Cella (indice + tipo) | Testo originale | Riformulazione suggerita |
 |---|---|---|---|
@@ -246,7 +246,7 @@ Tutte le occorrenze di "We/we" seguito da un verbo d'azione nelle celle markdown
 | 33 | Cella `7df2133f` (markdown, "4. Q3.3") | "We analyze the distribution of domestic crime victims by age group, with a specific focus on minors." | "The distribution of domestic crime victims by age group is analyzed, with a specific focus on minors." |
 | 34 | Cella `c5c9e698` (markdown, "5. Q3.4") | "We analyze which Mocodes recur most frequently in domestic crimes to identify modus operandi patterns." | "The Mocodes that recur most frequently in domestic crimes are analyzed to identify modus operandi patterns." |
 
-### 02_analyze/08_eda_block4.ipynb
+### 02_analyze/08_eda_block4.ipynb - RISOLTO
 
 | # | Cella (indice + tipo) | Testo originale | Riformulazione suggerita |
 |---|---|---|---|
@@ -256,7 +256,7 @@ Tutte le occorrenze di "We/we" seguito da un verbo d'azione nelle celle markdown
 | 38 | Cella `34e789cc` (markdown, "2. Q4.1") | "We exclude them from the filter to focus on firearm crimes." | "They are excluded from the filter to focus on firearm crimes." |
 | 39 | Cella `7c6028ca` (markdown, "3. Q4.2") | "We analyze the demographic profile (sex, age, descent) of victims in crimes committed with a firearm..." | "The demographic profile (sex, age, descent) of victims in crimes committed with a firearm is analyzed..." |
 
-### 02_analyze/09_eda_block5.ipynb
+### 02_analyze/09_eda_block5.ipynb - RISOLTO
 
 | # | Cella (indice + tipo) | Testo originale | Riformulazione suggerita |
 |---|---|---|---|
@@ -271,7 +271,7 @@ Tutte le occorrenze di "We/we" seguito da un verbo d'azione nelle celle markdown
 | 43 | Cella `f99bc80a` (markdown, "3. Q6.2") | "We measure hotspot stability by calculating the degree of overlap between hotspots identified in consecutive time periods." | "Hotspot stability is measured by calculating the degree of overlap between hotspots identified in consecutive time periods." |
 | 44 | Cella `c1e4d841` (markdown, "4. Q6.3") | "We apply spatial autocorrelation indices to statistically validate the clusters identified in Q6.1 and identify significant hotspots and coldspots." | "Spatial autocorrelation indices are applied to statistically validate the clusters identified in Q6.1 and identify significant hotspots and coldspots." |
 
-### 02_analyze/11_advanced_eda_block2.ipynb
+### 02_analyze/11_advanced_eda_block2.ipynb - RISOLTO
 
 | # | Cella (indice + tipo) | Testo originale | Riformulazione suggerita |
 |---|---|---|---|
