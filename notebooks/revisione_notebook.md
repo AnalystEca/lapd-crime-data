@@ -287,7 +287,7 @@ Nessuna occorrenza di "we/We + azione" in nessuna delle due (12_construct_block1
 
 ---
 
-## 5. Casi ambigui
+## 5. Casi ambigui - RISOLTO
 
 1. **09_eda_block5.ipynb, cella `8a49f1de`** (Observations Q5.1 — Clearance Rate by LAPD area): "**Notable finding**: the areas with the highest crime volume in the previous blocks (77th Street, Southeast, Southwest) sit in the middle of the clearance rate ranking (21.8%, 21.1%, 22.4%). There's no direct correlation between high crime volume and a low resolution rate." L'affermazione di assenza di correlazione è leggibile direttamente dalla tabella stampata nella cella di codice precedente (`area_pivot`, cella `397a97bf`) e viene poi effettivamente motivata nella cella successiva (`791e81eb`, già segnalato come non-problema nel file sorgente stesso). Non è però calcolato un coefficiente di correlazione formale tra volume di crimine e clearance rate sulle 21 aree. **Per chiudere**: calcolare esplicitamente una correlazione (es. Pearson/Spearman tra volume totale per area e `clearance_rate`) se si vuole mantenere l'affermazione "no direct correlation" in modo rigoroso, altrimenti attenuare a "non risulta un pattern evidente dal ranking".
 
